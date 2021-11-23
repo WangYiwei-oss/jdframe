@@ -13,8 +13,10 @@ func NewUserController() *UserController {
 	return &UserController{}
 }
 
+func GetUserName(ctx *gin.Context)(int,string){
+	return -400,"wyw"
+}
+
 func (u *UserController)Build(jdft *jdft.Jdft){
-	jdft.Router.GET("login", func(context *gin.Context) {
-		context.String(200,"helloword")
-	})
+	jdft.Handle("GET","login",GetUserName)
 }

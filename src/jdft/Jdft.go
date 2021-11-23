@@ -13,6 +13,13 @@ func NewJdft() *Jdft {
 	return &Jdft{Engine: gin.New()}
 }
 
+func (j *Jdft)Handle(httpMethod, relativePath string,handler interface{})*Jdft{
+	if handlerfunc := ConvertResponder(handler);handlerfunc!=nil{
+		j.Router.Handle(httpMethod,relativePath,handlerfunc)
+	}
+	return j
+}
+
 func (j *Jdft)Launch(){
 	j.Run(":8081")
 }

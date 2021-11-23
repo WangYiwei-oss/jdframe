@@ -1,15 +1,13 @@
 package main
 
 import (
-	"reflect"
+	"github.com/WangYiwei-oss/jdframe/src/jdft"
+	"github.com/WangYiwei-oss/jdframe/src/testcontroller"
 )
 
 func main(){
-	c := 32
-	v := reflect.ValueOf(c)
-	v.set
-	//jdft.NewJdft().
-	//	Mount("v1",testcontroller.NewUserController()).
-	//	Mount("v2",testcontroller.NewUserController()).
-	//Launch()
+	jdft.NewJdft().
+		Mount("v1",testcontroller.NewUserController()).
+		Mount("v2",testcontroller.NewUserController()).
+	Launch()
 }
