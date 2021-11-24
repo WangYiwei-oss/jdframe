@@ -7,10 +7,11 @@ import (
 type Jdft struct {
 	*gin.Engine
 	Router *gin.RouterGroup
+	beanfactory *BeanFactory
 }
 
 func NewJdft() *Jdft {
-	return &Jdft{Engine: gin.New()}
+	return &Jdft{Engine: gin.New(),beanfactory: NewBeanFactory()}
 }
 
 func (j *Jdft)Handle(httpMethod, relativePath string,handler interface{})*Jdft{
@@ -28,6 +29,14 @@ func (j *Jdft)Mount(version string,controllers ...JdController)*Jdft{
 	j.Router = j.Group(version)
 	for _,controller := range controllers{
 		controller.Build(j)
+		j.beanfactory.inject(controller)
+	}
+	return j
+}
+
+func (j *Jdft)Beans(beans ...interface{})*Jdft{
+	for _,bean := range beans{
+		j.beanfactory.addBean(bean)
 	}
 	return j
 }

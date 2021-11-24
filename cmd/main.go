@@ -7,6 +7,7 @@ import (
 
 func main(){
 	jdft.NewJdft().
+		Beans(jdft.NewGormAdapter()).
 		Mount("v1",testcontroller.NewUserController()).
 		Mount("v2",testcontroller.NewUserController()).
 	Launch()
