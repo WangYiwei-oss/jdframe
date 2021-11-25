@@ -1,0 +1,12 @@
+SPACE=1
+COMMENT=2
+Float=3
+FloatArg=4
+IntArg=5
+StringArg=6
+ASSIGN=7
+ARG=8
+SLICE=9
+DICT=10
+KEY=11
+'='=7
