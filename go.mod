@@ -3,7 +3,7 @@ module github.com/WangYiwei-oss/jdframe
 go 1.15
 
 require (
-	github.com/antlr/antlr4/runtime/Go/antlr v0.0.0-20211115101625-aeaa445b4d4f
+	github.com/antlr/antlr4/runtime/Go/antlr v0.0.0-20210914074925-ce3c483ec505
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

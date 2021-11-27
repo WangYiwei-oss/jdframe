@@ -2,9 +2,7 @@
 
 package parser // ConfigExpr
 
-import (
-	"github.com/antlr/antlr4/runtime/Go/antlr"
-)
+import "github.com/antlr/antlr4/runtime/Go/antlr"
 
 // BaseConfigExprListener is a complete listener for a parse tree produced by ConfigExprParser.
 type BaseConfigExprListener struct{}
@@ -23,11 +21,11 @@ func (s *BaseConfigExprListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
 // ExitEveryRule is called when any rule is exited.
 func (s *BaseConfigExprListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
-// EnterChunk is called when production chunk is entered.
-func (s *BaseConfigExprListener) EnterChunk(ctx *ChunkContext) {}
+// EnterConfig is called when production config is entered.
+func (s *BaseConfigExprListener) EnterConfig(ctx *ConfigContext) {}
 
-// ExitChunk is called when production chunk is exited.
-func (s *BaseConfigExprListener) ExitChunk(ctx *ChunkContext) {}
+// ExitConfig is called when production config is exited.
+func (s *BaseConfigExprListener) ExitConfig(ctx *ConfigContext) {}
 
 // EnterBlock is called when production block is entered.
 func (s *BaseConfigExprListener) EnterBlock(ctx *BlockContext) {}
@@ -47,8 +45,68 @@ func (s *BaseConfigExprListener) EnterFuncKey(ctx *FuncKeyContext) {}
 // ExitFuncKey is called when production FuncKey is exited.
 func (s *BaseConfigExprListener) ExitFuncKey(ctx *FuncKeyContext) {}
 
-// EnterFuncValue is called when production FuncValue is entered.
-func (s *BaseConfigExprListener) EnterFuncValue(ctx *FuncValueContext) {}
+// EnterObject is called when production object is entered.
+func (s *BaseConfigExprListener) EnterObject(ctx *ObjectContext) {}
 
-// ExitFuncValue is called when production FuncValue is exited.
-func (s *BaseConfigExprListener) ExitFuncValue(ctx *FuncValueContext) {}
+// ExitObject is called when production object is exited.
+func (s *BaseConfigExprListener) ExitObject(ctx *ObjectContext) {}
+
+// EnterSlice is called when production slice is entered.
+func (s *BaseConfigExprListener) EnterSlice(ctx *SliceContext) {}
+
+// ExitSlice is called when production slice is exited.
+func (s *BaseConfigExprListener) ExitSlice(ctx *SliceContext) {}
+
+// EnterPair is called when production pair is entered.
+func (s *BaseConfigExprListener) EnterPair(ctx *PairContext) {}
+
+// ExitPair is called when production pair is exited.
+func (s *BaseConfigExprListener) ExitPair(ctx *PairContext) {}
+
+// EnterMapKey is called when production MapKey is entered.
+func (s *BaseConfigExprListener) EnterMapKey(ctx *MapKeyContext) {}
+
+// ExitMapKey is called when production MapKey is exited.
+func (s *BaseConfigExprListener) ExitMapKey(ctx *MapKeyContext) {}
+
+// EnterStringValue is called when production StringValue is entered.
+func (s *BaseConfigExprListener) EnterStringValue(ctx *StringValueContext) {}
+
+// ExitStringValue is called when production StringValue is exited.
+func (s *BaseConfigExprListener) ExitStringValue(ctx *StringValueContext) {}
+
+// EnterIntValue is called when production IntValue is entered.
+func (s *BaseConfigExprListener) EnterIntValue(ctx *IntValueContext) {}
+
+// ExitIntValue is called when production IntValue is exited.
+func (s *BaseConfigExprListener) ExitIntValue(ctx *IntValueContext) {}
+
+// EnterFloatValue is called when production FloatValue is entered.
+func (s *BaseConfigExprListener) EnterFloatValue(ctx *FloatValueContext) {}
+
+// ExitFloatValue is called when production FloatValue is exited.
+func (s *BaseConfigExprListener) ExitFloatValue(ctx *FloatValueContext) {}
+
+// EnterBoolValue is called when production BoolValue is entered.
+func (s *BaseConfigExprListener) EnterBoolValue(ctx *BoolValueContext) {}
+
+// ExitBoolValue is called when production BoolValue is exited.
+func (s *BaseConfigExprListener) ExitBoolValue(ctx *BoolValueContext) {}
+
+// EnterNullValue is called when production NullValue is entered.
+func (s *BaseConfigExprListener) EnterNullValue(ctx *NullValueContext) {}
+
+// ExitNullValue is called when production NullValue is exited.
+func (s *BaseConfigExprListener) ExitNullValue(ctx *NullValueContext) {}
+
+// EnterObjectValue is called when production ObjectValue is entered.
+func (s *BaseConfigExprListener) EnterObjectValue(ctx *ObjectValueContext) {}
+
+// ExitObjectValue is called when production ObjectValue is exited.
+func (s *BaseConfigExprListener) ExitObjectValue(ctx *ObjectValueContext) {}
+
+// EnterSliceValue is called when production SliceValue is entered.
+func (s *BaseConfigExprListener) EnterSliceValue(ctx *SliceValueContext) {}
+
+// ExitSliceValue is called when production SliceValue is exited.
+func (s *BaseConfigExprListener) ExitSliceValue(ctx *SliceValueContext) {}

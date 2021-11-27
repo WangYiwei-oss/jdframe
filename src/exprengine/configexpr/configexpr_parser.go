@@ -16,28 +16,50 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 13, 30, 4,
-	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 3, 2, 3, 2, 3,
-	2, 3, 3, 7, 3, 17, 10, 3, 12, 3, 14, 3, 20, 11, 3, 3, 4, 3, 4, 3, 4, 3,
-	4, 3, 5, 3, 5, 3, 6, 3, 6, 3, 6, 2, 2, 7, 2, 4, 6, 8, 10, 2, 3, 4, 2, 8,
-	8, 11, 12, 2, 25, 2, 12, 3, 2, 2, 2, 4, 18, 3, 2, 2, 2, 6, 21, 3, 2, 2,
-	2, 8, 25, 3, 2, 2, 2, 10, 27, 3, 2, 2, 2, 12, 13, 5, 4, 3, 2, 13, 14, 7,
-	2, 2, 3, 14, 3, 3, 2, 2, 2, 15, 17, 5, 6, 4, 2, 16, 15, 3, 2, 2, 2, 17,
-	20, 3, 2, 2, 2, 18, 16, 3, 2, 2, 2, 18, 19, 3, 2, 2, 2, 19, 5, 3, 2, 2,
-	2, 20, 18, 3, 2, 2, 2, 21, 22, 5, 8, 5, 2, 22, 23, 7, 9, 2, 2, 23, 24,
-	5, 10, 6, 2, 24, 7, 3, 2, 2, 2, 25, 26, 7, 13, 2, 2, 26, 9, 3, 2, 2, 2,
-	27, 28, 9, 2, 2, 2, 28, 11, 3, 2, 2, 2, 3, 18,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 17, 81, 4,
+	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
+	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 3, 2, 3, 2, 3, 2, 3, 3, 7, 3, 25, 10,
+	3, 12, 3, 14, 3, 28, 11, 3, 3, 4, 3, 4, 3, 4, 3, 4, 3, 5, 3, 5, 3, 6, 3,
+	6, 3, 6, 3, 6, 7, 6, 40, 10, 6, 12, 6, 14, 6, 43, 11, 6, 3, 6, 3, 6, 3,
+	6, 3, 6, 5, 6, 49, 10, 6, 3, 7, 3, 7, 3, 7, 3, 7, 7, 7, 55, 10, 7, 12,
+	7, 14, 7, 58, 11, 7, 3, 7, 3, 7, 3, 7, 3, 7, 5, 7, 64, 10, 7, 3, 8, 3,
+	8, 3, 8, 3, 8, 3, 9, 3, 9, 3, 10, 3, 10, 3, 10, 3, 10, 3, 10, 3, 10, 3,
+	10, 5, 10, 79, 10, 10, 3, 10, 2, 2, 11, 2, 4, 6, 8, 10, 12, 14, 16, 18,
+	2, 2, 2, 82, 2, 20, 3, 2, 2, 2, 4, 26, 3, 2, 2, 2, 6, 29, 3, 2, 2, 2, 8,
+	33, 3, 2, 2, 2, 10, 48, 3, 2, 2, 2, 12, 63, 3, 2, 2, 2, 14, 65, 3, 2, 2,
+	2, 16, 69, 3, 2, 2, 2, 18, 78, 3, 2, 2, 2, 20, 21, 5, 4, 3, 2, 21, 22,
+	7, 2, 2, 3, 22, 3, 3, 2, 2, 2, 23, 25, 5, 6, 4, 2, 24, 23, 3, 2, 2, 2,
+	25, 28, 3, 2, 2, 2, 26, 24, 3, 2, 2, 2, 26, 27, 3, 2, 2, 2, 27, 5, 3, 2,
+	2, 2, 28, 26, 3, 2, 2, 2, 29, 30, 5, 8, 5, 2, 30, 31, 7, 3, 2, 2, 31, 32,
+	5, 18, 10, 2, 32, 7, 3, 2, 2, 2, 33, 34, 7, 16, 2, 2, 34, 9, 3, 2, 2, 2,
+	35, 36, 7, 4, 2, 2, 36, 41, 5, 14, 8, 2, 37, 38, 7, 5, 2, 2, 38, 40, 5,
+	14, 8, 2, 39, 37, 3, 2, 2, 2, 40, 43, 3, 2, 2, 2, 41, 39, 3, 2, 2, 2, 41,
+	42, 3, 2, 2, 2, 42, 44, 3, 2, 2, 2, 43, 41, 3, 2, 2, 2, 44, 45, 7, 6, 2,
+	2, 45, 49, 3, 2, 2, 2, 46, 47, 7, 4, 2, 2, 47, 49, 7, 6, 2, 2, 48, 35,
+	3, 2, 2, 2, 48, 46, 3, 2, 2, 2, 49, 11, 3, 2, 2, 2, 50, 51, 7, 7, 2, 2,
+	51, 56, 5, 18, 10, 2, 52, 53, 7, 5, 2, 2, 53, 55, 5, 18, 10, 2, 54, 52,
+	3, 2, 2, 2, 55, 58, 3, 2, 2, 2, 56, 54, 3, 2, 2, 2, 56, 57, 3, 2, 2, 2,
+	57, 59, 3, 2, 2, 2, 58, 56, 3, 2, 2, 2, 59, 60, 7, 8, 2, 2, 60, 64, 3,
+	2, 2, 2, 61, 62, 7, 7, 2, 2, 62, 64, 7, 8, 2, 2, 63, 50, 3, 2, 2, 2, 63,
+	61, 3, 2, 2, 2, 64, 13, 3, 2, 2, 2, 65, 66, 5, 16, 9, 2, 66, 67, 7, 9,
+	2, 2, 67, 68, 5, 18, 10, 2, 68, 15, 3, 2, 2, 2, 69, 70, 7, 15, 2, 2, 70,
+	17, 3, 2, 2, 2, 71, 79, 7, 15, 2, 2, 72, 79, 7, 14, 2, 2, 73, 79, 7, 13,
+	2, 2, 74, 79, 7, 17, 2, 2, 75, 79, 7, 10, 2, 2, 76, 79, 5, 10, 6, 2, 77,
+	79, 5, 12, 7, 2, 78, 71, 3, 2, 2, 2, 78, 72, 3, 2, 2, 2, 78, 73, 3, 2,
+	2, 2, 78, 74, 3, 2, 2, 2, 78, 75, 3, 2, 2, 2, 78, 76, 3, 2, 2, 2, 78, 77,
+	3, 2, 2, 2, 79, 19, 3, 2, 2, 2, 8, 26, 41, 48, 56, 63, 78,
 }
 var literalNames = []string{
-	"", "", "", "", "", "", "", "'='",
+	"", "'='", "'{'", "','", "'}'", "'['", "']'", "':'", "'null'",
 }
 var symbolicNames = []string{
-	"", "SPACE", "COMMENT", "Float", "FloatArg", "IntArg", "StringArg", "ASSIGN",
-	"ARG", "SLICE", "DICT", "KEY",
+	"", "", "", "", "", "", "", "", "", "SPACE", "COMMENT", "FloatArg", "IntArg",
+	"StringArg", "KEY", "Bool",
 }
 
 var ruleNames = []string{
-	"chunk", "block", "kvpair", "key", "value",
+	"config", "block", "kvpair", "key", "object", "slice", "pair", "mapkey",
+	"value",
 }
 
 type ConfigExprParser struct {
@@ -72,67 +94,75 @@ func NewConfigExprParser(input antlr.TokenStream) *ConfigExprParser {
 // ConfigExprParser tokens.
 const (
 	ConfigExprParserEOF       = antlr.TokenEOF
-	ConfigExprParserSPACE     = 1
-	ConfigExprParserCOMMENT   = 2
-	ConfigExprParserFloat     = 3
-	ConfigExprParserFloatArg  = 4
-	ConfigExprParserIntArg    = 5
-	ConfigExprParserStringArg = 6
-	ConfigExprParserASSIGN    = 7
-	ConfigExprParserARG       = 8
-	ConfigExprParserSLICE     = 9
-	ConfigExprParserDICT      = 10
-	ConfigExprParserKEY       = 11
+	ConfigExprParserT__0      = 1
+	ConfigExprParserT__1      = 2
+	ConfigExprParserT__2      = 3
+	ConfigExprParserT__3      = 4
+	ConfigExprParserT__4      = 5
+	ConfigExprParserT__5      = 6
+	ConfigExprParserT__6      = 7
+	ConfigExprParserT__7      = 8
+	ConfigExprParserSPACE     = 9
+	ConfigExprParserCOMMENT   = 10
+	ConfigExprParserFloatArg  = 11
+	ConfigExprParserIntArg    = 12
+	ConfigExprParserStringArg = 13
+	ConfigExprParserKEY       = 14
+	ConfigExprParserBool      = 15
 )
 
 // ConfigExprParser rules.
 const (
-	ConfigExprParserRULE_chunk  = 0
+	ConfigExprParserRULE_config = 0
 	ConfigExprParserRULE_block  = 1
 	ConfigExprParserRULE_kvpair = 2
 	ConfigExprParserRULE_key    = 3
-	ConfigExprParserRULE_value  = 4
+	ConfigExprParserRULE_object = 4
+	ConfigExprParserRULE_slice  = 5
+	ConfigExprParserRULE_pair   = 6
+	ConfigExprParserRULE_mapkey = 7
+	ConfigExprParserRULE_value  = 8
 )
 
-// IChunkContext is an interface to support dynamic dispatch.
-type IChunkContext interface {
+// IConfigContext is an interface to support dynamic dispatch.
+type IConfigContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsChunkContext differentiates from other interfaces.
-	IsChunkContext()
+	// IsConfigContext differentiates from other interfaces.
+	IsConfigContext()
 }
 
-type ChunkContext struct {
+type ConfigContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyChunkContext() *ChunkContext {
-	var p = new(ChunkContext)
+func NewEmptyConfigContext() *ConfigContext {
+	var p = new(ConfigContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = ConfigExprParserRULE_chunk
+	p.RuleIndex = ConfigExprParserRULE_config
 	return p
 }
 
-func (*ChunkContext) IsChunkContext() {}
+func (*ConfigContext) IsConfigContext() {}
 
-func NewChunkContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ChunkContext {
-	var p = new(ChunkContext)
+func NewConfigContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ConfigContext {
+	var p = new(ConfigContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = ConfigExprParserRULE_chunk
+	p.RuleIndex = ConfigExprParserRULE_config
 
 	return p
 }
 
-func (s *ChunkContext) GetParser() antlr.Parser { return s.parser }
+func (s *ConfigContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ChunkContext) Block() IBlockContext {
+func (s *ConfigContext) Block() IBlockContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IBlockContext)(nil)).Elem(), 0)
 
 	if t == nil {
@@ -142,33 +172,33 @@ func (s *ChunkContext) Block() IBlockContext {
 	return t.(IBlockContext)
 }
 
-func (s *ChunkContext) EOF() antlr.TerminalNode {
+func (s *ConfigContext) EOF() antlr.TerminalNode {
 	return s.GetToken(ConfigExprParserEOF, 0)
 }
 
-func (s *ChunkContext) GetRuleContext() antlr.RuleContext {
+func (s *ConfigContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *ChunkContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *ConfigContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *ChunkContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *ConfigContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(ConfigExprListener); ok {
-		listenerT.EnterChunk(s)
+		listenerT.EnterConfig(s)
 	}
 }
 
-func (s *ChunkContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *ConfigContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(ConfigExprListener); ok {
-		listenerT.ExitChunk(s)
+		listenerT.ExitConfig(s)
 	}
 }
 
-func (p *ConfigExprParser) Chunk() (localctx IChunkContext) {
-	localctx = NewChunkContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 0, ConfigExprParserRULE_chunk)
+func (p *ConfigExprParser) Config() (localctx IConfigContext) {
+	localctx = NewConfigContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 0, ConfigExprParserRULE_config)
 
 	defer func() {
 		p.ExitRule()
@@ -188,11 +218,11 @@ func (p *ConfigExprParser) Chunk() (localctx IChunkContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(10)
+		p.SetState(18)
 		p.Block()
 	}
 	{
-		p.SetState(11)
+		p.SetState(19)
 		p.Match(ConfigExprParserEOF)
 	}
 
@@ -302,17 +332,17 @@ func (p *ConfigExprParser) Block() (localctx IBlockContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(16)
+	p.SetState(24)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == ConfigExprParserKEY {
 		{
-			p.SetState(13)
+			p.SetState(21)
 			p.Kvpair()
 		}
 
-		p.SetState(18)
+		p.SetState(26)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -368,10 +398,6 @@ func (s *KvpairContext) Key() IKeyContext {
 	return t.(IKeyContext)
 }
 
-func (s *KvpairContext) ASSIGN() antlr.TerminalNode {
-	return s.GetToken(ConfigExprParserASSIGN, 0)
-}
-
 func (s *KvpairContext) Value() IValueContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IValueContext)(nil)).Elem(), 0)
 
@@ -424,15 +450,15 @@ func (p *ConfigExprParser) Kvpair() (localctx IKvpairContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(19)
+		p.SetState(27)
 		p.Key()
 	}
 	{
-		p.SetState(20)
-		p.Match(ConfigExprParserASSIGN)
+		p.SetState(28)
+		p.Match(ConfigExprParserT__0)
 	}
 	{
-		p.SetState(21)
+		p.SetState(29)
 		p.Value()
 	}
 
@@ -546,8 +572,545 @@ func (p *ConfigExprParser) Key() (localctx IKeyContext) {
 	localctx = NewFuncKeyContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(23)
+		p.SetState(31)
 		p.Match(ConfigExprParserKEY)
+	}
+
+	return localctx
+}
+
+// IObjectContext is an interface to support dynamic dispatch.
+type IObjectContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsObjectContext differentiates from other interfaces.
+	IsObjectContext()
+}
+
+type ObjectContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyObjectContext() *ObjectContext {
+	var p = new(ObjectContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = ConfigExprParserRULE_object
+	return p
+}
+
+func (*ObjectContext) IsObjectContext() {}
+
+func NewObjectContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ObjectContext {
+	var p = new(ObjectContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = ConfigExprParserRULE_object
+
+	return p
+}
+
+func (s *ObjectContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ObjectContext) AllPair() []IPairContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IPairContext)(nil)).Elem())
+	var tst = make([]IPairContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IPairContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *ObjectContext) Pair(i int) IPairContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IPairContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IPairContext)
+}
+
+func (s *ObjectContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ObjectContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ObjectContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterObject(s)
+	}
+}
+
+func (s *ObjectContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitObject(s)
+	}
+}
+
+func (p *ConfigExprParser) Object() (localctx IObjectContext) {
+	localctx = NewObjectContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 8, ConfigExprParserRULE_object)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(46)
+	p.GetErrorHandler().Sync(p)
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext()) {
+	case 1:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(33)
+			p.Match(ConfigExprParserT__1)
+		}
+		{
+			p.SetState(34)
+			p.Pair()
+		}
+		p.SetState(39)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		for _la == ConfigExprParserT__2 {
+			{
+				p.SetState(35)
+				p.Match(ConfigExprParserT__2)
+			}
+			{
+				p.SetState(36)
+				p.Pair()
+			}
+
+			p.SetState(41)
+			p.GetErrorHandler().Sync(p)
+			_la = p.GetTokenStream().LA(1)
+		}
+		{
+			p.SetState(42)
+			p.Match(ConfigExprParserT__3)
+		}
+
+	case 2:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(44)
+			p.Match(ConfigExprParserT__1)
+		}
+		{
+			p.SetState(45)
+			p.Match(ConfigExprParserT__3)
+		}
+
+	}
+
+	return localctx
+}
+
+// ISliceContext is an interface to support dynamic dispatch.
+type ISliceContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsSliceContext differentiates from other interfaces.
+	IsSliceContext()
+}
+
+type SliceContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptySliceContext() *SliceContext {
+	var p = new(SliceContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = ConfigExprParserRULE_slice
+	return p
+}
+
+func (*SliceContext) IsSliceContext() {}
+
+func NewSliceContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SliceContext {
+	var p = new(SliceContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = ConfigExprParserRULE_slice
+
+	return p
+}
+
+func (s *SliceContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *SliceContext) AllValue() []IValueContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IValueContext)(nil)).Elem())
+	var tst = make([]IValueContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IValueContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *SliceContext) Value(i int) IValueContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IValueContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IValueContext)
+}
+
+func (s *SliceContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *SliceContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *SliceContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterSlice(s)
+	}
+}
+
+func (s *SliceContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitSlice(s)
+	}
+}
+
+func (p *ConfigExprParser) Slice() (localctx ISliceContext) {
+	localctx = NewSliceContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 10, ConfigExprParserRULE_slice)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(61)
+	p.GetErrorHandler().Sync(p)
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 4, p.GetParserRuleContext()) {
+	case 1:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(48)
+			p.Match(ConfigExprParserT__4)
+		}
+		{
+			p.SetState(49)
+			p.Value()
+		}
+		p.SetState(54)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		for _la == ConfigExprParserT__2 {
+			{
+				p.SetState(50)
+				p.Match(ConfigExprParserT__2)
+			}
+			{
+				p.SetState(51)
+				p.Value()
+			}
+
+			p.SetState(56)
+			p.GetErrorHandler().Sync(p)
+			_la = p.GetTokenStream().LA(1)
+		}
+		{
+			p.SetState(57)
+			p.Match(ConfigExprParserT__5)
+		}
+
+	case 2:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(59)
+			p.Match(ConfigExprParserT__4)
+		}
+		{
+			p.SetState(60)
+			p.Match(ConfigExprParserT__5)
+		}
+
+	}
+
+	return localctx
+}
+
+// IPairContext is an interface to support dynamic dispatch.
+type IPairContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsPairContext differentiates from other interfaces.
+	IsPairContext()
+}
+
+type PairContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyPairContext() *PairContext {
+	var p = new(PairContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = ConfigExprParserRULE_pair
+	return p
+}
+
+func (*PairContext) IsPairContext() {}
+
+func NewPairContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PairContext {
+	var p = new(PairContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = ConfigExprParserRULE_pair
+
+	return p
+}
+
+func (s *PairContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *PairContext) Mapkey() IMapkeyContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IMapkeyContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IMapkeyContext)
+}
+
+func (s *PairContext) Value() IValueContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IValueContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IValueContext)
+}
+
+func (s *PairContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *PairContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *PairContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterPair(s)
+	}
+}
+
+func (s *PairContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitPair(s)
+	}
+}
+
+func (p *ConfigExprParser) Pair() (localctx IPairContext) {
+	localctx = NewPairContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 12, ConfigExprParserRULE_pair)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(63)
+		p.Mapkey()
+	}
+	{
+		p.SetState(64)
+		p.Match(ConfigExprParserT__6)
+	}
+	{
+		p.SetState(65)
+		p.Value()
+	}
+
+	return localctx
+}
+
+// IMapkeyContext is an interface to support dynamic dispatch.
+type IMapkeyContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsMapkeyContext differentiates from other interfaces.
+	IsMapkeyContext()
+}
+
+type MapkeyContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyMapkeyContext() *MapkeyContext {
+	var p = new(MapkeyContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = ConfigExprParserRULE_mapkey
+	return p
+}
+
+func (*MapkeyContext) IsMapkeyContext() {}
+
+func NewMapkeyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MapkeyContext {
+	var p = new(MapkeyContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = ConfigExprParserRULE_mapkey
+
+	return p
+}
+
+func (s *MapkeyContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *MapkeyContext) CopyFrom(ctx *MapkeyContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+}
+
+func (s *MapkeyContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *MapkeyContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+type MapKeyContext struct {
+	*MapkeyContext
+}
+
+func NewMapKeyContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *MapKeyContext {
+	var p = new(MapKeyContext)
+
+	p.MapkeyContext = NewEmptyMapkeyContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*MapkeyContext))
+
+	return p
+}
+
+func (s *MapKeyContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *MapKeyContext) StringArg() antlr.TerminalNode {
+	return s.GetToken(ConfigExprParserStringArg, 0)
+}
+
+func (s *MapKeyContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterMapKey(s)
+	}
+}
+
+func (s *MapKeyContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitMapKey(s)
+	}
+}
+
+func (p *ConfigExprParser) Mapkey() (localctx IMapkeyContext) {
+	localctx = NewMapkeyContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 14, ConfigExprParserRULE_mapkey)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	localctx = NewMapKeyContext(p, localctx)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(67)
+		p.Match(ConfigExprParserStringArg)
 	}
 
 	return localctx
@@ -603,12 +1166,12 @@ func (s *ValueContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-type FuncValueContext struct {
+type NullValueContext struct {
 	*ValueContext
 }
 
-func NewFuncValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FuncValueContext {
-	var p = new(FuncValueContext)
+func NewNullValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *NullValueContext {
+	var p = new(NullValueContext)
 
 	p.ValueContext = NewEmptyValueContext()
 	p.parser = parser
@@ -617,38 +1180,241 @@ func NewFuncValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *Func
 	return p
 }
 
-func (s *FuncValueContext) GetRuleContext() antlr.RuleContext {
+func (s *NullValueContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *FuncValueContext) StringArg() antlr.TerminalNode {
-	return s.GetToken(ConfigExprParserStringArg, 0)
-}
-
-func (s *FuncValueContext) SLICE() antlr.TerminalNode {
-	return s.GetToken(ConfigExprParserSLICE, 0)
-}
-
-func (s *FuncValueContext) DICT() antlr.TerminalNode {
-	return s.GetToken(ConfigExprParserDICT, 0)
-}
-
-func (s *FuncValueContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *NullValueContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(ConfigExprListener); ok {
-		listenerT.EnterFuncValue(s)
+		listenerT.EnterNullValue(s)
 	}
 }
 
-func (s *FuncValueContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *NullValueContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(ConfigExprListener); ok {
-		listenerT.ExitFuncValue(s)
+		listenerT.ExitNullValue(s)
+	}
+}
+
+type ObjectValueContext struct {
+	*ValueContext
+}
+
+func NewObjectValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ObjectValueContext {
+	var p = new(ObjectValueContext)
+
+	p.ValueContext = NewEmptyValueContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ValueContext))
+
+	return p
+}
+
+func (s *ObjectValueContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ObjectValueContext) Object() IObjectContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IObjectContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IObjectContext)
+}
+
+func (s *ObjectValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterObjectValue(s)
+	}
+}
+
+func (s *ObjectValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitObjectValue(s)
+	}
+}
+
+type BoolValueContext struct {
+	*ValueContext
+}
+
+func NewBoolValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *BoolValueContext {
+	var p = new(BoolValueContext)
+
+	p.ValueContext = NewEmptyValueContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ValueContext))
+
+	return p
+}
+
+func (s *BoolValueContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *BoolValueContext) Bool() antlr.TerminalNode {
+	return s.GetToken(ConfigExprParserBool, 0)
+}
+
+func (s *BoolValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterBoolValue(s)
+	}
+}
+
+func (s *BoolValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitBoolValue(s)
+	}
+}
+
+type SliceValueContext struct {
+	*ValueContext
+}
+
+func NewSliceValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SliceValueContext {
+	var p = new(SliceValueContext)
+
+	p.ValueContext = NewEmptyValueContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ValueContext))
+
+	return p
+}
+
+func (s *SliceValueContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *SliceValueContext) Slice() ISliceContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ISliceContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ISliceContext)
+}
+
+func (s *SliceValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterSliceValue(s)
+	}
+}
+
+func (s *SliceValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitSliceValue(s)
+	}
+}
+
+type FloatValueContext struct {
+	*ValueContext
+}
+
+func NewFloatValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FloatValueContext {
+	var p = new(FloatValueContext)
+
+	p.ValueContext = NewEmptyValueContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ValueContext))
+
+	return p
+}
+
+func (s *FloatValueContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FloatValueContext) FloatArg() antlr.TerminalNode {
+	return s.GetToken(ConfigExprParserFloatArg, 0)
+}
+
+func (s *FloatValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterFloatValue(s)
+	}
+}
+
+func (s *FloatValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitFloatValue(s)
+	}
+}
+
+type StringValueContext struct {
+	*ValueContext
+}
+
+func NewStringValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *StringValueContext {
+	var p = new(StringValueContext)
+
+	p.ValueContext = NewEmptyValueContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ValueContext))
+
+	return p
+}
+
+func (s *StringValueContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *StringValueContext) StringArg() antlr.TerminalNode {
+	return s.GetToken(ConfigExprParserStringArg, 0)
+}
+
+func (s *StringValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterStringValue(s)
+	}
+}
+
+func (s *StringValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitStringValue(s)
+	}
+}
+
+type IntValueContext struct {
+	*ValueContext
+}
+
+func NewIntValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *IntValueContext {
+	var p = new(IntValueContext)
+
+	p.ValueContext = NewEmptyValueContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ValueContext))
+
+	return p
+}
+
+func (s *IntValueContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IntValueContext) IntArg() antlr.TerminalNode {
+	return s.GetToken(ConfigExprParserIntArg, 0)
+}
+
+func (s *IntValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.EnterIntValue(s)
+	}
+}
+
+func (s *IntValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(ConfigExprListener); ok {
+		listenerT.ExitIntValue(s)
 	}
 }
 
 func (p *ConfigExprParser) Value() (localctx IValueContext) {
 	localctx = NewValueContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, ConfigExprParserRULE_value)
-	var _la int
+	p.EnterRule(localctx, 16, ConfigExprParserRULE_value)
 
 	defer func() {
 		p.ExitRule()
@@ -666,18 +1432,68 @@ func (p *ConfigExprParser) Value() (localctx IValueContext) {
 		}
 	}()
 
-	localctx = NewFuncValueContext(p, localctx)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(25)
-		_la = p.GetTokenStream().LA(1)
+	p.SetState(76)
+	p.GetErrorHandler().Sync(p)
 
-		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<ConfigExprParserStringArg)|(1<<ConfigExprParserSLICE)|(1<<ConfigExprParserDICT))) != 0) {
-			p.GetErrorHandler().RecoverInline(p)
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
+	switch p.GetTokenStream().LA(1) {
+	case ConfigExprParserStringArg:
+		localctx = NewStringValueContext(p, localctx)
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(69)
+			p.Match(ConfigExprParserStringArg)
 		}
+
+	case ConfigExprParserIntArg:
+		localctx = NewIntValueContext(p, localctx)
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(70)
+			p.Match(ConfigExprParserIntArg)
+		}
+
+	case ConfigExprParserFloatArg:
+		localctx = NewFloatValueContext(p, localctx)
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(71)
+			p.Match(ConfigExprParserFloatArg)
+		}
+
+	case ConfigExprParserBool:
+		localctx = NewBoolValueContext(p, localctx)
+		p.EnterOuterAlt(localctx, 4)
+		{
+			p.SetState(72)
+			p.Match(ConfigExprParserBool)
+		}
+
+	case ConfigExprParserT__7:
+		localctx = NewNullValueContext(p, localctx)
+		p.EnterOuterAlt(localctx, 5)
+		{
+			p.SetState(73)
+			p.Match(ConfigExprParserT__7)
+		}
+
+	case ConfigExprParserT__1:
+		localctx = NewObjectValueContext(p, localctx)
+		p.EnterOuterAlt(localctx, 6)
+		{
+			p.SetState(74)
+			p.Object()
+		}
+
+	case ConfigExprParserT__4:
+		localctx = NewSliceValueContext(p, localctx)
+		p.EnterOuterAlt(localctx, 7)
+		{
+			p.SetState(75)
+			p.Slice()
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
 	return localctx

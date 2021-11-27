@@ -2,6 +2,7 @@ package jdft
 
 import (
 	"github.com/gin-gonic/gin"
+	"log"
 )
 
 type Jdft struct {
@@ -22,7 +23,11 @@ func (j *Jdft)Handle(httpMethod, relativePath string,handler interface{})*Jdft{
 }
 
 func (j *Jdft)Launch(){
-	j.Run(":8081")
+	ip,_ := GlobalSettings["IP"].(string)
+	err := j.Run(ip)
+	if err!=nil{
+		log.Fatalln("服务器启动失败",err)
+	}
 }
 
 func (j *Jdft)Mount(version string,controllers ...JdController)*Jdft{
