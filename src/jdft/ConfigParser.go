@@ -1,6 +1,7 @@
 package jdft
 
 import (
+	"fmt"
 	parser "github.com/WangYiwei-oss/jdframe/src/exprengine/configexpr"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	json "github.com/json-iterator/go"
@@ -8,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 )
+
 
 var GlobalSettings map[string]interface{}
 
@@ -19,6 +21,7 @@ func init(){
 	p:=parser.NewConfigExprParser(ts)
 	tree := p.Config()
 	antlr.ParseTreeWalkerDefault.Walk(&calcListener{},tree)
+	fmt.Println("----------",GlobalSettings)
 }
 
 type calcListener struct{

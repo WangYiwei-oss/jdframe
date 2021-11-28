@@ -31,6 +31,8 @@ func NewJdft() *Jdft {
 func (j *Jdft)Handle(httpMethod, relativePath string,handler interface{})*Jdft{
 	if handlerfunc := ConvertResponder(handler);handlerfunc!=nil{
 		j.Router.Handle(httpMethod,relativePath,handlerfunc)
+	}else{
+		log.Println("路由没有被解析并注入:",httpMethod,relativePath)
 	}
 	return j
 }

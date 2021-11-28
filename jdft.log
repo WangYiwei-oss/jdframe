@@ -1,0 +1,12 @@
+{"level":"debug","ts":"2021-11-28T17:31:32.946+0800","caller":"runtime/proc.go:204","msg":"asdasdasdasd"}
+{"level":"debug","ts":"2021-11-28 20:53:30","caller":"runtime/proc.go:204","msg":"asdasdasdasd"}
+{"level":"debug","ts":"2021-11-28 21:15:16","caller":"runtime/proc.go:204","msg":"asdasdasdasd"}
+{"level":"debug","ts":"2021-11-28 21:20:39","caller":"cmd/main.go:11","msg":"asdasdasdasd"}
+{"ts":"2021-11-28 21:27:26","caller":"cmd/main.go:11"}
+{"ts":"2021-11-28 21:48:04"}
+{"caller":"logger/Logger.go:71"}
+{"caller":"logger/Logger.go:71"}
+{"caller":"logger/Logger.go:71"}
+{"caller":"logger/Logger.go:71"}
+{"caller":"logger/Logger.go:71"}
+{"caller":"logger/Logger.go:71"}
