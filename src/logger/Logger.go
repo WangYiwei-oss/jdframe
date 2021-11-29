@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"fmt"
 	"github.com/WangYiwei-oss/jdframe/src/jdft"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -29,14 +28,78 @@ func getLoggerLevel(lvl string) zapcore.Level {
 	return zapcore.InfoLevel
 }
 
-var LoggerMap map[string]mLogger
+var loggerMap map[string]Mlogger
 
-type mLogger *zap.SugaredLogger
+func GetLogger(name string)Mlogger{
+	if logger,ok := loggerMap[name];ok{
+		return logger
+	}
+	return Mlogger{suger:nil}
+}
+
+type Mlogger struct{
+	suger *zap.SugaredLogger
+}
+
+func (m Mlogger)Debug(args ...interface{}) {
+	m.suger.Debug(args...)
+}
+
+func (m Mlogger)Dbugf(template string, args ...interface{}) {
+	m.suger.Debugf(template, args...)
+}
+
+func (m Mlogger)Info(args ...interface{}) {
+	m.suger.Info(args...)
+}
+
+func (m Mlogger)Infof(template string, args ...interface{}) {
+	m.suger.Infof(template, args...)
+}
+
+func (m Mlogger)Warn(args ...interface{}) {
+	m.suger.Warn(args...)
+}
+
+func (m Mlogger)Warnf(template string, args ...interface{}) {
+	m.suger.Warnf(template, args...)
+}
+
+func (m Mlogger)Error(args ...interface{}) {
+	m.suger.Error(args...)
+}
+
+func (m Mlogger)Errorf(template string, args ...interface{}) {
+	m.suger.Errorf(template, args...)
+}
+
+func (m Mlogger)DPanic(args ...interface{}) {
+	m.suger.DPanic(args...)
+}
+
+func (m Mlogger)DPanicf(template string, args ...interface{}) {
+	m.suger.DPanicf(template, args...)
+}
+
+func (m Mlogger)Panic(args ...interface{}) {
+	m.suger.Panic(args...)
+}
+
+func (m Mlogger)Panicf(template string, args ...interface{}) {
+	m.suger.Panicf(template, args...)
+}
+
+func (m Mlogger)Fatal(args ...interface{}) {
+	m.suger.Fatal(args...)
+}
+
+func (m Mlogger)Fatalf(template string, args ...interface{}) {
+	m.suger.Fatalf(template, args...)
+}
 
 func init() {
-	LoggerMap = make(map[string]mLogger)
+	loggerMap = make(map[string]Mlogger)
 	parseLoggerFromGlobalSettings()
-	fmt.Println("bbbbbbbbbbbbb", LoggerMap)
 }
 
 // parseLoggerFromGlobalSettings 将GlobalSetting中的LOGGER解析为LoggerMap
@@ -50,12 +113,13 @@ func parseLoggerFromGlobalSettings() {
 		log.Fatalln("[error]解析日志配置错误 format")
 	}
 	for key, value := range mloggers.(map[string]interface{}) {
-		LoggerMap[key] = generateCuttingLogger(value.(map[string]interface{}))
+		if value.(map[string]interface{})["type"]=="cutting"{
+			loggerMap[key] = generateCuttingLogger(value.(map[string]interface{}))
+		}
 	}
 }
 
-func generateCuttingLogger(conf map[string]interface{}) *zap.SugaredLogger {
-	fmt.Println("<<<<<<<<<", conf)
+func generateCuttingLogger(conf map[string]interface{}) Mlogger {
 	writers := make([]io.Writer,0)
 	var filenames []interface{}
 	maxage := 2
@@ -75,13 +139,13 @@ func generateCuttingLogger(conf map[string]interface{}) *zap.SugaredLogger {
 		default:
 			cuttingConfig := conf["cuttingConfig"].(map[string]interface{})
 			if m,ok:=cuttingConfig["maxAge"];ok {
-				maxage = m.(int)
+				maxage = int(m.(float64))
 			}
 			if m,ok:=cuttingConfig["maxBackUps"];ok {
-				maxbackups = m.(int)
+				maxbackups = int(m.(float64))
 			}
 			if m,ok:=cuttingConfig["maxSize"];ok {
-				maxsize = m.(int)
+				maxsize = int(m.(float64))
 			}
 			if c,ok:=cuttingConfig["compress"];ok {
 				compress = c.(bool)
@@ -103,7 +167,7 @@ func generateCuttingLogger(conf map[string]interface{}) *zap.SugaredLogger {
 	encoder := FormatterMap[formatter].ToEncoderConfig()
 	core := zapcore.NewCore(zapcore.NewJSONEncoder(encoder),syncWriter,zap.NewAtomicLevelAt(level))
 	logger := zap.New(core,zap.AddCaller())
-	return logger.Sugar()
+	return Mlogger{suger:logger.Sugar()}
 }
 
 //var GlobalLogger *zap.SugaredLogger

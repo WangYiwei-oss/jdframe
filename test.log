@@ -1,0 +1,2 @@
+{"Level":"info","Time":"2021-11-30 00:34:16","Caller":"logger/Logger.go:53","msg":"这是一个测试"}
+{"Level":"info","Time":"2021-11-30 00:34:51","Caller":"logger/Logger.go:53","Msg":"这是一个测试"}
