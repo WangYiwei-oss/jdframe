@@ -3,6 +3,7 @@ package testcontroller
 import (
 	"fmt"
 	"github.com/WangYiwei-oss/jdframe/src/jdft"
+	"github.com/WangYiwei-oss/jdframe/src/logger"
 	"github.com/WangYiwei-oss/jdframe/src/models"
 	"github.com/gin-gonic/gin"
 )
@@ -34,7 +35,8 @@ func (u *UserController)GetUserName2(ctx *gin.Context)(int,jdft.JModel){
 	ret := models.NewUserModel()
 	ret.UserName="wyw"
 	ret.Password="123"
-	return -400,ret
+	logger.GetLogger("Global").Info("执行了用户controller")
+	return 1,ret
 }
 
 func (u *UserController)Build(jdft *jdft.Jdft){

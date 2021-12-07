@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 )
-
+//TODO 仍需要进一步封装，需要加入Errorhandle，正好把handle这个概念封装
 var levelMap = map[string]zapcore.Level{
 	"debug":  zapcore.DebugLevel,
 	"info":   zapcore.InfoLevel,
