@@ -1,8 +1,6 @@
-package logger
+package jdft
 
 import (
-	"fmt"
-	"github.com/WangYiwei-oss/jdframe/src/jdft"
 	"go.uber.org/zap/zapcore"
 	"log"
 )
@@ -12,12 +10,11 @@ var FormatterMap map[string]*LogFormatter
 func init() {
 	FormatterMap = make(map[string]*LogFormatter)
 	parseFomatterFromGlobalSettings()
-	fmt.Println("vvvvvvvvvvvvv",FormatterMap)
 }
 
 // parseFomatterFromGlobalSettings 将GlobalSetting中的LOGGER.format解析为FormatterMap
-func parseFomatterFromGlobalSettings(){
-	logger, _ := jdft.GlobalSettings["LOGGER"]
+func parseFomatterFromGlobalSettings() {
+	logger, _ := GlobalSettings["LOGGER"]
 	if logger == nil {
 		log.Fatalln("[error]解析日志配置错误 logger")
 	}
@@ -48,13 +45,13 @@ func parseFomatterFromGlobalSettings(){
 			timeLayout = t.(string)
 		}
 		formatter := LogFormatter{
-			TimeKey: time,
-			LevelKey: level,
-			CallerKey: caller,
+			TimeKey:    time,
+			LevelKey:   level,
+			CallerKey:  caller,
 			MessageKey: message,
 			TimeLayout: timeLayout,
 		}
-		FormatterMap[key]=&formatter
+		FormatterMap[key] = &formatter
 	}
 }
 
