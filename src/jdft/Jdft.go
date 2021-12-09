@@ -7,7 +7,7 @@ import (
 	"sync"
 )
 
-var mlog Mlogger
+var mlog *Mlogger
 var onceCron sync.Once
 var taskCron *cron.Cron
 

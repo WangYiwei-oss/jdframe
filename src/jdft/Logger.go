@@ -28,77 +28,77 @@ func getLoggerLevel(lvl string) zapcore.Level {
 	return zapcore.InfoLevel
 }
 
-var loggerMap map[string]Mlogger
+var loggerMap map[string]*Mlogger
 
-func GetLogger(name string) Mlogger {
+func GetLogger(name string) *Mlogger {
 	if logger, ok := loggerMap[name]; ok {
 		return logger
 	}
-	return Mlogger{suger: nil}
+	return &Mlogger{suger: nil}
 }
 
 type Mlogger struct {
 	suger *zap.SugaredLogger
 }
 
-func (m Mlogger) Debug(args ...interface{}) {
+func (m *Mlogger) Debug(args ...interface{}) {
 	m.suger.Debug(args...)
 }
 
-func (m Mlogger) Dbugf(template string, args ...interface{}) {
+func (m *Mlogger) Dbugf(template string, args ...interface{}) {
 	m.suger.Debugf(template, args...)
 }
 
-func (m Mlogger) Info(args ...interface{}) {
+func (m *Mlogger) Info(args ...interface{}) {
 	m.suger.Info(args...)
 }
 
-func (m Mlogger) Infof(template string, args ...interface{}) {
+func (m *Mlogger) Infof(template string, args ...interface{}) {
 	m.suger.Infof(template, args...)
 }
 
-func (m Mlogger) Warn(args ...interface{}) {
+func (m *Mlogger) Warn(args ...interface{}) {
 	m.suger.Warn(args...)
 }
 
-func (m Mlogger) Warnf(template string, args ...interface{}) {
+func (m *Mlogger) Warnf(template string, args ...interface{}) {
 	m.suger.Warnf(template, args...)
 }
 
-func (m Mlogger) Error(args ...interface{}) {
+func (m *Mlogger) Error(args ...interface{}) {
 	m.suger.Error(args...)
 }
 
-func (m Mlogger) Errorf(template string, args ...interface{}) {
+func (m *Mlogger) Errorf(template string, args ...interface{}) {
 	m.suger.Errorf(template, args...)
 }
 
-func (m Mlogger) DPanic(args ...interface{}) {
+func (m *Mlogger) DPanic(args ...interface{}) {
 	m.suger.DPanic(args...)
 }
 
-func (m Mlogger) DPanicf(template string, args ...interface{}) {
+func (m *Mlogger) DPanicf(template string, args ...interface{}) {
 	m.suger.DPanicf(template, args...)
 }
 
-func (m Mlogger) Panic(args ...interface{}) {
+func (m *Mlogger) Panic(args ...interface{}) {
 	m.suger.Panic(args...)
 }
 
-func (m Mlogger) Panicf(template string, args ...interface{}) {
+func (m *Mlogger) Panicf(template string, args ...interface{}) {
 	m.suger.Panicf(template, args...)
 }
 
-func (m Mlogger) Fatal(args ...interface{}) {
+func (m *Mlogger) Fatal(args ...interface{}) {
 	m.suger.Fatal(args...)
 }
 
-func (m Mlogger) Fatalf(template string, args ...interface{}) {
+func (m *Mlogger) Fatalf(template string, args ...interface{}) {
 	m.suger.Fatalf(template, args...)
 }
 
 func init() {
-	loggerMap = make(map[string]Mlogger)
+	loggerMap = make(map[string]*Mlogger)
 	parseLoggerFromGlobalSettings()
 }
 
@@ -119,7 +119,7 @@ func parseLoggerFromGlobalSettings() {
 	}
 }
 
-func generateCuttingLogger(conf map[string]interface{}) Mlogger {
+func generateCuttingLogger(conf map[string]interface{}) *Mlogger {
 	writers := make([]io.Writer, 0)
 	var filenames []interface{}
 	maxage := 2
@@ -167,5 +167,5 @@ func generateCuttingLogger(conf map[string]interface{}) Mlogger {
 	encoder := FormatterMap[formatter].ToEncoderConfig()
 	core := zapcore.NewCore(zapcore.NewJSONEncoder(encoder), syncWriter, zap.NewAtomicLevelAt(level))
 	logger := zap.New(core, zap.AddCaller())
-	return Mlogger{suger: logger.Sugar()}
+	return &Mlogger{suger: logger.Sugar()}
 }
