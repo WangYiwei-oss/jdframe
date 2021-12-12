@@ -24,6 +24,8 @@ func NewUserController() *UserController {
 func (u *UserController) GetUserName(ctx *gin.Context) (int, string) {
 	user := User{}
 	u.DB.First(&user)
+	passwd := ctx.Query("password")
+	fmt.Println(passwd)
 	fmt.Println(user)
 	return -400, "wyw"
 }
@@ -34,8 +36,8 @@ func (u *UserController) GetUserName3(ctx *gin.Context) int {
 
 func (u *UserController) GetUserName2(ctx *gin.Context) (int, jdft.JModel) {
 	ret := models.NewUserModel()
-	ret.UserName = "wyw"
-	ret.Password = "123"
+	ret.UserName = ctx.PostForm("username")
+	ret.Password = ctx.PostForm("password")
 	jdft.GetLogger("Global").Info("执行了用户controller")
 	jdft.DoTask(u.TestTask, u.CallBack)
 	return 1, ret
@@ -52,6 +54,6 @@ func (u *UserController) CallBack() {
 
 func (u *UserController) Build(jdft *jdft.Jdft) {
 	jdft.Handle("GET", "login", u.GetUserName)
-	jdft.Handle("GET", "login2", u.GetUserName2)
+	jdft.Handle("POST", "login2", u.GetUserName2)
 	jdft.Handle("GET", "login3", u.GetUserName3)
 }

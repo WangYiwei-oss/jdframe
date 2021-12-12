@@ -83,3 +83,12 @@
 {"Level":"info","Time":"2021-12-09 21:12:26","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
 {"Level":"info","Time":"2021-12-09 21:12:26","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
 {"Level":"info","Time":"2021-12-09 21:12:27","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
+{"Level":"info","Time":"2021-12-10 00:20:41","Caller":"jdft/Logger.go:53","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-10 00:21:18","Caller":"jdft/Logger.go:53","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-10 00:21:24","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
+{"Level":"info","Time":"2021-12-10 00:24:49","Caller":"jdft/Logger.go:53","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-10 00:26:07","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
+{"Level":"info","Time":"2021-12-10 00:26:30","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
+{"Level":"info","Time":"2021-12-10 00:26:42","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
+{"Level":"info","Time":"2021-12-10 00:26:43","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
+{"Level":"info","Time":"2021-12-10 00:26:52","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
