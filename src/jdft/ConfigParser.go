@@ -5,6 +5,7 @@ import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	json "github.com/json-iterator/go"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -13,7 +14,8 @@ var GlobalSettings map[string]interface{}
 
 func init() {
 	GlobalSettings = make(map[string]interface{})
-	is, _ := antlr.NewFileStream("./Settings.conf")
+	wd, _ := os.Getwd()
+	is, _ := antlr.NewFileStream(wd + "\\Settings.conf")
 	lexer := parser.NewConfigExprLexer(is)
 	ts := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
 	p := parser.NewConfigExprParser(ts)

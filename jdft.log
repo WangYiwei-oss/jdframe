@@ -94,3 +94,4 @@
 {"Level":"info","Time":"2021-12-10 00:26:52","Caller":"jdft/Logger.go:53","Msg":"执行了用户controller"}
 {"Level":"info","Time":"2021-12-13 20:43:32","Caller":"jdft/Logger.go:53","Msg":"这是一个测试"}
 {"Level":"info","Time":"2021-12-13 20:48:04","Caller":"jdft/Logger.go:53","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-13 21:15:32","Caller":"jdft/Logger.go:53","Msg":"这是一个测试"}
