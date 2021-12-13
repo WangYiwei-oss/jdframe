@@ -1,6 +1,7 @@
 package jdft
 
 import (
+	"fmt"
 	parser "github.com/WangYiwei-oss/jdframe/src/exprengine/configexpr"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	json "github.com/json-iterator/go"
@@ -15,6 +16,7 @@ var GlobalSettings map[string]interface{}
 func init() {
 	GlobalSettings = make(map[string]interface{})
 	wd, _ := os.Getwd()
+	fmt.Println("当前路径为", wd)
 	is, _ := antlr.NewFileStream(wd + "\\Settings.conf")
 	lexer := parser.NewConfigExprLexer(is)
 	ts := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
