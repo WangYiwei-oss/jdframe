@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	json "github.com/json-iterator/go"
 	"reflect"
+	"strconv"
 )
 
 var StatusCodeMap map[int]string
@@ -16,11 +17,12 @@ func init() {
 		new(StringResponder),
 		new(ModelResponder),
 	}
-	StatusCodeMap = map[int]string{
-		1:    "成功",
-		-100: "用户名或密码错误",
-		-400: "服务器错误",
+	StatusCodeMap = make(map[int]string)
+	for k, v := range GlobalSettings["STATUS_CODE"].(map[string]interface{}) {
+		ik, _ := strconv.Atoi(k)
+		StatusCodeMap[ik] = v.(string)
 	}
+
 	CanntFindStatusJSON = gin.H{
 		"success": false,
 		"status":  "Server error, Cannt find StatusCode",
