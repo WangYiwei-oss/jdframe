@@ -1,6 +1,7 @@
 package jdft
 
 import (
+	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"go.uber.org/zap/zapcore"
 	"log"
 )
@@ -14,7 +15,7 @@ func init() {
 
 // parseFomatterFromGlobalSettings 将GlobalSetting中的LOGGER.format解析为FormatterMap
 func parseFomatterFromGlobalSettings() {
-	logger, _ := GlobalSettings["LOGGER"]
+	logger, _ := configparser.GlobalSettings["LOGGER"]
 	if logger == nil {
 		log.Fatalln("[error]解析日志配置错误 logger")
 	}

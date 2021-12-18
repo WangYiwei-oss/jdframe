@@ -1,6 +1,7 @@
 package jdft
 
 import (
+	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"github.com/gin-gonic/gin"
 	json "github.com/json-iterator/go"
 	"reflect"
@@ -18,7 +19,7 @@ func init() {
 		new(ModelResponder),
 	}
 	StatusCodeMap = make(map[int]string)
-	for k, v := range GlobalSettings["STATUS_CODE"].(map[string]interface{}) {
+	for k, v := range configparser.GlobalSettings["STATUS_CODE"].(map[string]interface{}) {
 		ik, _ := strconv.Atoi(k)
 		StatusCodeMap[ik] = v.(string)
 	}

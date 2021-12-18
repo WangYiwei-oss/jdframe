@@ -1,6 +1,7 @@
 package jdft
 
 import (
+	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"github.com/gin-gonic/gin"
 	"github.com/robfig/cron/v3"
 	"log"
@@ -44,7 +45,7 @@ func (j *Jdft) Handle(httpMethod, relativePath string, handler interface{}) *Jdf
 
 func (j *Jdft) Launch() {
 	j.Use(ErrorHandler())
-	ip, _ := GlobalSettings["IP"].(string)
+	ip, _ := configparser.GlobalSettings["IP"].(string)
 	err := j.Run(ip)
 	if err != nil {
 		log.Fatalf("服务器启动失败, %s", err)

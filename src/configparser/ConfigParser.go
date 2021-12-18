@@ -1,4 +1,4 @@
-package jdft
+package configparser
 
 import (
 	parser "github.com/WangYiwei-oss/jdframe/src/exprengine/configexpr"
@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+//TODO antlr分析配置文件中，应该区分出来map键的不同类型，而不是只能[string]interface
 var GlobalSettings map[string]interface{}
 
 func init() {

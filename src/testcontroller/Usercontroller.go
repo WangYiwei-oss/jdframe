@@ -14,7 +14,8 @@ type User struct {
 	Password string `gorm:"column:password"`
 }
 type UserController struct {
-	DB *jdft.GormAdapter `inject:"-"`
+	DB    *jdft.GormAdapter `inject:"-"`
+	Redis *jdft.Jedis       `inject:"-"`
 }
 
 func NewUserController() *UserController {
@@ -31,7 +32,9 @@ func (u *UserController) GetUserName(ctx *gin.Context) (int, string) {
 }
 
 func (u *UserController) GetUserName3(ctx *gin.Context) int {
-	return -400
+	a, _ := u.Redis.Get("name")
+	fmt.Println(a)
+	return 1
 }
 
 func (u *UserController) GetUserName2(ctx *gin.Context) (int, jdft.JModel) {
