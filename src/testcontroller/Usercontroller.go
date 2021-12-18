@@ -31,10 +31,11 @@ func (u *UserController) GetUserName(ctx *gin.Context) (int, string) {
 	return -400, "wyw"
 }
 
-func (u *UserController) GetUserName3(ctx *gin.Context) int {
-	a, _ := u.Redis.Get("name")
-	fmt.Println(a)
-	return 1
+func (u *UserController) GetUserName3(ctx *gin.Context) (int, []interface{}) {
+	ret := []interface{}{
+		"asd", 111, "zxcz",
+	}
+	return 1, ret
 }
 
 func (u *UserController) GetUserName2(ctx *gin.Context) (int, jdft.JModel) {

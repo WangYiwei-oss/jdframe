@@ -89,3 +89,5 @@
 {"Level":"info","Time":"2021-12-18 12:12:02","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2021-12-18 20:52:45","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2021-12-18 20:53:25","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-18 21:04:16","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-18 21:04:56","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
