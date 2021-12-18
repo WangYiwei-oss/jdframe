@@ -16,6 +16,10 @@ func init() {
 	mlog = GetLogger("Global")
 }
 
+func GetGlobalSettings() map[string]interface{} {
+	return configparser.GlobalSettings
+}
+
 func getCronTask() *cron.Cron { //创建定时任务的单例模式
 	onceCron.Do(func() {
 		taskCron = cron.New(cron.WithSeconds())
