@@ -16,8 +16,7 @@ func init() {
 	ResponderList = []Responder{
 		new(SingleResponder),
 		new(StringResponder),
-		new(ModelResponder),
-		new(SliceResponder),
+		new(JsonResponder),
 	}
 	StatusCodeMap = make(map[int]string)
 	for k, v := range configparser.GlobalSettings["STATUS_CODE"].(map[string]interface{}) {
@@ -40,9 +39,8 @@ type SingleResponder func(ctx *gin.Context) int
 
 type StringResponder func(ctx *gin.Context) (int, string)
 
-type ModelResponder func(ctx *gin.Context) (int, JModel)
-
-type SliceResponder func(ctx *gin.Context) (int, []interface{})
+type Json interface{}
+type JsonResponder func(ctx *gin.Context) (int, Json)
 
 func (s SingleResponder) RespondTo() gin.HandlerFunc {
 	return func(context *gin.Context) {
@@ -86,34 +84,9 @@ func (s StringResponder) RespondTo() gin.HandlerFunc {
 	}
 }
 
-func (s SliceResponder) RespondTo() gin.HandlerFunc {
+func (j JsonResponder) RespondTo() gin.HandlerFunc {
 	return func(context *gin.Context) {
-		code, data := s(context)
-		retcode := 200
-		success := true
-		if code < 0 {
-			retcode = 200
-			success = false
-		}
-		if stat, ok := StatusCodeMap[code]; ok {
-			ret, err := json.Marshal(data)
-			if err != nil {
-				panic("解析model错误")
-			}
-			context.JSON(retcode, gin.H{
-				"success": success,
-				"status":  stat,
-				"data":    string(ret),
-			})
-			return
-		}
-		context.JSON(500, CanntFindStatusJSON)
-	}
-}
-
-func (m ModelResponder) RespondTo() gin.HandlerFunc {
-	return func(context *gin.Context) {
-		code, data := m(context)
+		code, data := j(context)
 		retcode := 200
 		success := true
 		if code < 0 {
