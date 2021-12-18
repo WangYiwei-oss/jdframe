@@ -17,6 +17,9 @@ func init() {
 		new(SingleResponder),
 		new(StringResponder),
 		new(JsonResponder),
+		new(IntResponder),
+		new(Float32Responder),
+		new(Float64Responder),
 	}
 	StatusCodeMap = make(map[int]string)
 	for k, v := range configparser.GlobalSettings["STATUS_CODE"].(map[string]interface{}) {
@@ -38,6 +41,12 @@ type Responder interface {
 type SingleResponder func(ctx *gin.Context) int
 
 type StringResponder func(ctx *gin.Context) (int, string)
+
+type IntResponder func(ctx *gin.Context) (int, int)
+
+type Float32Responder func(ctx *gin.Context) (int, float32)
+
+type Float64Responder func(ctx *gin.Context) (int, float64)
 
 type Json interface{}
 type JsonResponder func(ctx *gin.Context) (int, Json)
@@ -66,14 +75,69 @@ func (s SingleResponder) RespondTo() gin.HandlerFunc {
 func (s StringResponder) RespondTo() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		code, data := s(context)
-		retcode := 200
 		success := true
 		if code < 0 {
-			retcode = 200
 			success = false
 		}
 		if stat, ok := StatusCodeMap[code]; ok {
-			context.JSON(retcode, gin.H{
+			context.JSON(200, gin.H{
+				"success": success,
+				"status":  stat,
+				"data":    data,
+			})
+			return
+		}
+		context.JSON(500, CanntFindStatusJSON)
+	}
+}
+
+func (i IntResponder) RespondTo() gin.HandlerFunc {
+	return func(context *gin.Context) {
+		code, data := i(context)
+		success := true
+		if code < 0 {
+			success = false
+		}
+		if stat, ok := StatusCodeMap[code]; ok {
+			context.JSON(200, gin.H{
+				"success": success,
+				"status":  stat,
+				"data":    data,
+			})
+			return
+		}
+		context.JSON(500, CanntFindStatusJSON)
+	}
+}
+
+func (f Float32Responder) RespondTo() gin.HandlerFunc {
+	return func(context *gin.Context) {
+		code, data := f(context)
+		success := true
+		if code < 0 {
+			success = false
+		}
+		if stat, ok := StatusCodeMap[code]; ok {
+			context.JSON(200, gin.H{
+				"success": success,
+				"status":  stat,
+				"data":    data,
+			})
+			return
+		}
+		context.JSON(500, CanntFindStatusJSON)
+	}
+}
+
+func (f Float64Responder) RespondTo() gin.HandlerFunc {
+	return func(context *gin.Context) {
+		code, data := f(context)
+		success := true
+		if code < 0 {
+			success = false
+		}
+		if stat, ok := StatusCodeMap[code]; ok {
+			context.JSON(200, gin.H{
 				"success": success,
 				"status":  stat,
 				"data":    data,
