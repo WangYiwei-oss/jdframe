@@ -23,22 +23,22 @@ func NewUserController() *UserController {
 }
 
 func (u *UserController) GetUserName(ctx *gin.Context) (int, string) {
-	user := User{}
-	u.DB.First(&user)
-	passwd := ctx.Query("password")
-	fmt.Println(passwd)
-	fmt.Println(user)
-	return -400, "wyw"
+	//user := User{}
+	//u.DB.First(&user)
+	//passwd := ctx.Query("password")
+	//fmt.Println(passwd)
+	//fmt.Println(user)
+	return 1, ""
 }
 
-func (u *UserController) GetUserName3(ctx *gin.Context) (int, []interface{}) {
+func (u *UserController) GetUserName3(ctx *gin.Context) (int, jdft.Json) {
 	ret := []interface{}{
 		"asd", 111, "zxcz",
 	}
 	return 1, ret
 }
 
-func (u *UserController) GetUserName2(ctx *gin.Context) (int, jdft.JModel) {
+func (u *UserController) GetUserName2(ctx *gin.Context) (int, jdft.Json) {
 	ret := models.NewUserModel()
 	ret.UserName = ctx.PostForm("username")
 	ret.Password = ctx.PostForm("password")

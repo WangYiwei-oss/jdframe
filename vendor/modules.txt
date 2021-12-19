@@ -1,5 +1,7 @@
 # github.com/BurntSushi/toml v0.4.1
 ## explicit
+# github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible
+github.com/Knetic/govaluate
 # github.com/antlr/antlr4/runtime/Go/antlr v0.0.0-20210914074925-ce3c483ec505
 ## explicit
 github.com/antlr/antlr4/runtime/Go/antlr
@@ -8,6 +10,19 @@ github.com/antlr/antlr4/runtime/Go/antlr
 github.com/boombuler/barcode
 github.com/boombuler/barcode/qr
 github.com/boombuler/barcode/utils
+# github.com/casbin/casbin v1.9.1
+## explicit
+github.com/casbin/casbin
+github.com/casbin/casbin/config
+github.com/casbin/casbin/effect
+github.com/casbin/casbin/errors
+github.com/casbin/casbin/log
+github.com/casbin/casbin/model
+github.com/casbin/casbin/persist
+github.com/casbin/casbin/persist/file-adapter
+github.com/casbin/casbin/rbac
+github.com/casbin/casbin/rbac/default-role-manager
+github.com/casbin/casbin/util
 # github.com/cespare/xxhash/v2 v2.1.2
 github.com/cespare/xxhash/v2
 # github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f

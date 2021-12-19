@@ -6,6 +6,7 @@ require (
 	github.com/BurntSushi/toml v0.4.1 // indirect
 	github.com/antlr/antlr4/runtime/Go/antlr v0.0.0-20210914074925-ce3c483ec505
 	github.com/boombuler/barcode v1.0.1
+	github.com/casbin/casbin v1.9.1
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
 	github.com/go-redis/redis/v8 v8.11.4

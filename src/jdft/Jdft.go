@@ -40,15 +40,20 @@ func NewJdft() *Jdft {
 
 func (j *Jdft) Handle(httpMethod, relativePath string, handler interface{}) *Jdft {
 	if handlerfunc := ConvertResponder(handler); handlerfunc != nil {
-		j.Router.Handle(httpMethod, relativePath, handlerfunc)
+		router := j.Router
+		router.Handle(httpMethod, relativePath, handlerfunc)
 	} else {
 		log.Printf("路由%s, %s没有被解析并注入", httpMethod, relativePath)
 	}
 	return j
 }
 
+func (j *Jdft) Attach(f ...gin.HandlerFunc) *Jdft {
+	j.Use(f...)
+	return j
+}
+
 func (j *Jdft) Launch() {
-	j.Use(ErrorHandler())
 	ip, _ := configparser.GlobalSettings["IP"].(string)
 	err := j.Run(ip)
 	if err != nil {

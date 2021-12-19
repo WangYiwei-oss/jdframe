@@ -1,0 +1,10 @@
+p, member, /v1/login, GET
+p, member, /depts/:id, GET
+
+p, admin, /depts, POST
+p, admin, /depts/:id, PUT
+p, admin, /depts/:id, DELETE
+
+g, wyw, admin
+g, admin, member
+g, member, guest
