@@ -7,6 +7,8 @@ require (
 	github.com/antlr/antlr4/runtime/Go/antlr v0.0.0-20210914074925-ce3c483ec505
 	github.com/boombuler/barcode v1.0.1
 	github.com/casbin/casbin v1.9.1
+	github.com/casbin/casbin/v2 v2.37.4
+	github.com/casbin/gorm-adapter/v3 v3.4.6
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
 	github.com/go-redis/redis/v8 v8.11.4
