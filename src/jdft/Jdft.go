@@ -2,11 +2,14 @@ package jdft
 
 import (
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
+	"github.com/WangYiwei-oss/jdframe/src/models"
 	"github.com/gin-gonic/gin"
 	"github.com/robfig/cron/v3"
 	"log"
 	"sync"
 )
+
+type User models.User
 
 var mlog *Mlogger
 var onceCron sync.Once
