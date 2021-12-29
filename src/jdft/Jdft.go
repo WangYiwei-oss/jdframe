@@ -1,8 +1,10 @@
 package jdft
 
 import (
+	mcasbin "github.com/WangYiwei-oss/jdframe/src/casbin"
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"github.com/WangYiwei-oss/jdframe/src/models"
+	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
 	"github.com/robfig/cron/v3"
 	"log"
@@ -13,12 +15,15 @@ import (
 type User models.User
 type UserRole models.UserRole
 
+var CasbinEnforcer *casbin.Enforcer
+
 var mlog *Mlogger
 var onceCron sync.Once
 var taskCron *cron.Cron
 
 func init() {
 	mlog = GetLogger("Global")
+	CasbinEnforcer = mcasbin.E
 }
 
 func GetGlobalSettings() map[string]interface{} {
