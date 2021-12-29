@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/WangYiwei-oss/jdframe/src/jdft"
 	"time"
 )
 
@@ -26,8 +27,7 @@ func run(ctx context.Context) string {
 }
 
 func main() {
-	ctx, _ := context.WithTimeout(context.Background(), time.Second)
-	fmt.Println(run(ctx))
-	ctx, _ = context.WithTimeout(context.Background(), 5*time.Second)
-	fmt.Println(run(ctx))
+	uu := jdft.UserRole{}
+	jdft.NewGormAdapter().DB.Where("id=1").First(&uu)
+	fmt.Println(uu)
 }

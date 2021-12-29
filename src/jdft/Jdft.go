@@ -9,7 +9,9 @@ import (
 	"sync"
 )
 
+//暴露一些类型给用户
 type User models.User
+type UserRole models.UserRole
 
 var mlog *Mlogger
 var onceCron sync.Once
