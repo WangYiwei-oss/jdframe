@@ -41,7 +41,6 @@ func (u *UserController) GetUserName3(ctx *gin.Context) (int, jdft.Json) {
 func (u *UserController) GetUserName2(ctx *gin.Context) (int, jdft.Json) {
 	ret := models.NewUserModel()
 	ret.UserName = ctx.PostForm("username")
-	ret.Password = ctx.PostForm("password")
 	jdft.GetLogger("Global").Info("执行了用户controller")
 	jdft.DoTask(u.TestTask, u.CallBack)
 	return 1, ret

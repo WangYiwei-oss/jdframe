@@ -115,3 +115,9 @@
 {"Level":"info","Time":"2021-12-20 21:04:21","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2021-12-20 21:11:29","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2021-12-20 23:02:56","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-20 23:31:49","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-20 23:32:56","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-21 21:52:46","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-21 21:54:02","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-21 21:57:28","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2021-12-22 00:45:21","Caller":"jdft/Logger.go:54","Msg":"这是一个测试"}
