@@ -17,6 +17,10 @@ import (
 type User models.User
 type UserRole models.UserRole
 
+type Gorm configs.GormAdapter
+type Jedis configs.Jedis
+type QrCode configs.QrCode
+
 var CasbinEnforcer *casbin.Enforcer
 var GlobalLogger *configs.Mlogger
 
