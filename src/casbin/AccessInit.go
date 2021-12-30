@@ -1,7 +1,7 @@
 package casbin
 
 import (
-	"github.com/WangYiwei-oss/jdframe/src/jdft"
+	"github.com/WangYiwei-oss/jdframe/src/configs"
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v3"
 	"log"
@@ -10,7 +10,7 @@ import (
 var E *casbin.Enforcer
 
 func init() {
-	adap, err := gormadapter.NewAdapterByDB(jdft.NewGormAdapter().DB)
+	adap, err := gormadapter.NewAdapterByDB(configs.NewGormAdapter().DB)
 	if err != nil {
 		log.Fatalln("casbin: 读取Gorm Adapter失败")
 	}

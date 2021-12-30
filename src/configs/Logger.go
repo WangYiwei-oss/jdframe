@@ -1,4 +1,4 @@
-package jdft
+package configs
 
 import (
 	"github.com/WangYiwei-oss/jdframe/src/configparser"

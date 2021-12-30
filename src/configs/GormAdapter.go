@@ -1,7 +1,8 @@
-package jdft
+package configs
 
 import (
 	"fmt"
+	"github.com/WangYiwei-oss/jdframe/src/configinjector"
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -9,7 +10,11 @@ import (
 	"sync"
 )
 
-var doOnce sync.Once
+func init() {
+	configinjector.RegisterBean("MYSQL", NewGormAdapter)
+}
+
+var doOnceGorm sync.Once
 
 type GormAdapter struct {
 	*gorm.DB
@@ -19,7 +24,7 @@ var db *gorm.DB
 
 func NewGormAdapter() *GormAdapter {
 	var err error
-	doOnce.Do(func() {
+	doOnceGorm.Do(func() {
 		config := configparser.GlobalSettings["SQL_CONFIG"].(map[string]interface{})
 		dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 			config["USER"].(string),

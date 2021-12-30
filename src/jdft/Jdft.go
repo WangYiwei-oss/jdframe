@@ -2,7 +2,9 @@ package jdft
 
 import (
 	mcasbin "github.com/WangYiwei-oss/jdframe/src/casbin"
+	"github.com/WangYiwei-oss/jdframe/src/configinjector"
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
+	"github.com/WangYiwei-oss/jdframe/src/configs"
 	"github.com/WangYiwei-oss/jdframe/src/models"
 	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
@@ -16,18 +18,23 @@ type User models.User
 type UserRole models.UserRole
 
 var CasbinEnforcer *casbin.Enforcer
+var GlobalLogger *configs.Mlogger
 
-var mlog *Mlogger
+//单例
 var onceCron sync.Once
 var taskCron *cron.Cron
 
 func init() {
-	mlog = GetLogger("Global")
+	GlobalLogger = configs.GetLogger("Global")
 	CasbinEnforcer = mcasbin.E
 }
 
 func GetGlobalSettings() map[string]interface{} {
 	return configparser.GlobalSettings
+}
+
+func GetLogger(name string) *configs.Mlogger {
+	return configs.GetLogger(name)
 }
 
 func getCronTask() *cron.Cron { //创建定时任务的单例模式
@@ -64,6 +71,7 @@ func (j *Jdft) Attach(f ...gin.HandlerFunc) *Jdft {
 }
 
 func (j *Jdft) Launch() {
+	j.Beans(configinjector.GetBeans()...) //注入默认的依赖
 	ip, _ := configparser.GlobalSettings["IP"].(string)
 	err := j.Run(ip)
 	if err != nil {

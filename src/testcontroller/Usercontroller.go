@@ -2,6 +2,7 @@ package testcontroller
 
 import (
 	"fmt"
+	"github.com/WangYiwei-oss/jdframe/src/configs"
 	"github.com/WangYiwei-oss/jdframe/src/jdft"
 	"github.com/WangYiwei-oss/jdframe/src/models"
 	"github.com/gin-gonic/gin"
@@ -14,8 +15,8 @@ type User struct {
 	Password string `gorm:"column:password"`
 }
 type UserController struct {
-	DB    *jdft.GormAdapter `inject:"-"`
-	Redis *jdft.Jedis       `inject:"-"`
+	DB    *configs.GormAdapter `inject:"-"`
+	Redis *configs.Jedis       `inject:"-"`
 }
 
 func NewUserController() *UserController {

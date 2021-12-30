@@ -1,7 +1,7 @@
 package casbin
 
 import (
-	"github.com/WangYiwei-oss/jdframe/src/jdft"
+	"github.com/WangYiwei-oss/jdframe/src/configs"
 	"github.com/WangYiwei-oss/jdframe/src/models"
 )
 
@@ -16,7 +16,7 @@ func (r *RoleRel) String() string {
 
 func GetRoles(pid int, m *[]*RoleRel, pname string) {
 	proles := make([]*models.Role, 0)
-	jdft.NewGormAdapter().Where("role_pid=?", pid).Find(&proles)
+	configs.NewGormAdapter().Where("role_pid=?", pid).Find(&proles)
 	if len(proles) == 0 {
 		return
 	}
@@ -30,14 +30,14 @@ func GetRoles(pid int, m *[]*RoleRel, pname string) {
 
 // GetUserRoles 获取用户和角色的对应关系
 func GetUserRoles() (users []models.User) {
-	jdft.NewGormAdapter().Select("a.user_name,c.role_name").Table("users a,user_roles b,roles c").
+	configs.NewGormAdapter().Select("a.user_name,c.role_name").Table("users a,user_roles b,roles c").
 		Where("a.user_id=b.user_id and b.role_id=c.role_id").Order("a.user_id desc").
 		Find(&users)
 	return
 }
 
 func GetRouterRoles() (routers []*models.Router) {
-	jdft.NewGormAdapter().Select("a.r_uri,a.r_method,c.role_name").Table("routers a,router_roles b,roles c").
+	configs.NewGormAdapter().Select("a.r_uri,a.r_method,c.role_name").Table("routers a,router_roles b,roles c").
 		Where("a.r_id=b.router_id and b.role_id=c.role_id").
 		Order("role_name").Find(&routers)
 	return
