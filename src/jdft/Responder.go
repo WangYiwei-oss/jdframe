@@ -4,6 +4,7 @@ import (
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"github.com/gin-gonic/gin"
 	json "github.com/json-iterator/go"
+	"net/http"
 	"reflect"
 	"strconv"
 )
@@ -11,6 +12,22 @@ import (
 var StatusCodeMap map[int]string
 var ResponderList []Responder
 var CanntFindStatusJSON gin.H
+
+func Unauthorized(ctx *gin.Context) {
+	ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+		"success": false,
+		"status":  "503",
+		"data":    "Unauthorized",
+	})
+}
+
+func MissingRequired(ctx *gin.Context) {
+	ctx.AbortWithStatusJSON(422, gin.H{
+		"success": false,
+		"status":  "422",
+		"data":    "Missing Required",
+	})
+}
 
 func init() {
 	ResponderList = []Responder{

@@ -173,7 +173,12 @@ func (stmt *Statement) AddVar(writer clause.Writer, vars ...interface{}) {
 		case clause.Column, clause.Table:
 			stmt.QuoteTo(writer, v)
 		case Valuer:
-			stmt.AddVar(writer, v.GormValue(stmt.Context, stmt.DB))
+			reflectValue := reflect.ValueOf(v)
+			if reflectValue.Kind() == reflect.Ptr && reflectValue.IsNil() {
+				stmt.AddVar(writer, nil)
+			} else {
+				stmt.AddVar(writer, v.GormValue(stmt.Context, stmt.DB))
+			}
 		case clause.Expr:
 			v.Build(stmt)
 		case *clause.Expr:
@@ -282,6 +287,11 @@ func (stmt *Statement) BuildCondition(query interface{}, args ...interface{}) []
 			if len(args) > 0 && strings.Contains(s, "@") {
 				// looks like a named query
 				return []clause.Expression{clause.NamedExpr{SQL: s, Vars: args}}
+			}
+
+			if strings.Contains(strings.TrimSpace(s), " ") {
+				// looks like a where condition
+				return []clause.Expression{clause.Expr{SQL: s, Vars: args}}
 			}
 
 			if len(args) == 1 {

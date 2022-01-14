@@ -419,9 +419,11 @@ func (db *DB) Count(count *int64) (tx *DB) {
 
 	tx.Statement.Dest = count
 	tx = tx.callbacks.Query().Execute(tx)
-	if tx.RowsAffected != 1 {
+
+	if _, ok := db.Statement.Clauses["GROUP BY"]; ok || tx.RowsAffected != 1 {
 		*count = tx.RowsAffected
 	}
+
 	return
 }
 
@@ -454,9 +456,7 @@ func (db *DB) Scan(dest interface{}) (tx *DB) {
 	tx = db.getInstance()
 	tx.Config = &config
 
-	if rows, err := tx.Rows(); err != nil {
-		tx.AddError(err)
-	} else {
+	if rows, err := tx.Rows(); err == nil {
 		defer rows.Close()
 		if rows.Next() {
 			tx.ScanRows(rows, dest)
