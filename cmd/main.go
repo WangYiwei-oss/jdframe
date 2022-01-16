@@ -8,7 +8,7 @@ import (
 
 func main() {
 	jdft.GetLogger("Global").Info("这是一个测试")
-	jdft.NewJdft().
+	jdft.NewJdft().Config().
 		Attach(middlewares.RBAC()).
 		Mount("v1", testcontroller.NewUserController()).
 		Mount("v2", testcontroller.NewUserController()).

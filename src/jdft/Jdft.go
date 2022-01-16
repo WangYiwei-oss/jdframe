@@ -59,6 +59,11 @@ func NewJdft() *Jdft {
 	return &Jdft{Engine: gin.New(), beanfactory: NewBeanFactory()}
 }
 
+func (j *Jdft) Config() *Jdft {
+	j.Beans(configinjector.GetBeans()...) //注入默认的依赖
+	return j
+}
+
 func (j *Jdft) Handle(httpMethod, relativePath string, handler interface{}) *Jdft {
 	if handlerfunc := ConvertResponder(handler); handlerfunc != nil {
 		router := j.Router
@@ -75,7 +80,6 @@ func (j *Jdft) Attach(f ...gin.HandlerFunc) *Jdft {
 }
 
 func (j *Jdft) Launch() {
-	j.Beans(configinjector.GetBeans()...) //注入默认的依赖
 	ip, _ := configparser.GlobalSettings["IP"].(string)
 	err := j.Run(ip)
 	if err != nil {
