@@ -71,6 +71,7 @@ func (j *Jdft) Config(beans ...interface{}) *Jdft {
 		return j
 	}
 	for _, bean := range beans {
+		j.beanfactory.inject(bean)
 		v_b := reflect.ValueOf(bean)
 		if v_b.Kind() == reflect.Ptr {
 			for i := 0; i < v_b.NumMethod(); i++ {
