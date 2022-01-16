@@ -81,6 +81,7 @@ func (j *Jdft) Config(beans ...interface{}) *Jdft {
 				if reflect.ValueOf(b).Kind() != reflect.Ptr {
 					log.Fatalf("config注入方法必须返回指针类型")
 				}
+				j.beanfactory.inject(bean)
 				j.beanfactory.addBean(b)
 			}
 		} else {
