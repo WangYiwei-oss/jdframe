@@ -39,3 +39,5 @@
 {"Level":"info","Time":"2022-01-16 17:34:52","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2022-01-16 17:35:22","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2022-01-16 17:38:06","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 21:19:55","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 21:25:19","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}

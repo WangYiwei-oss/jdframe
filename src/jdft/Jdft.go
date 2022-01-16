@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/robfig/cron/v3"
 	"log"
-	"reflect"
 	"sync"
 )
 
@@ -62,32 +61,6 @@ func NewJdft() *Jdft {
 
 func (j *Jdft) DefaultBean() *Jdft {
 	j.Beans(configinjector.GetBeans()...) //注入默认的依赖
-	return j
-}
-
-// Config 把一个类所有的成员函数都拿出来执行一遍，并添加到bean factory中去
-func (j *Jdft) Config(beans ...interface{}) *Jdft {
-	if len(beans) == 0 {
-		return j
-	}
-	for _, bean := range beans {
-		j.beanfactory.inject(bean)
-		v_b := reflect.ValueOf(bean)
-		if v_b.Kind() == reflect.Ptr {
-			for i := 0; i < v_b.NumMethod(); i++ {
-				v_m := v_b.Method(i)
-				parms := make([]reflect.Value, 0)
-				b := v_m.Call(parms)[0].Interface()
-				if reflect.ValueOf(b).Kind() != reflect.Ptr {
-					log.Fatalf("config注入方法必须返回指针类型")
-				}
-				j.beanfactory.inject(bean)
-				j.beanfactory.addBean(b)
-			}
-		} else {
-			log.Fatalf("config注入必须是指针类型")
-		}
-	}
 	return j
 }
 
