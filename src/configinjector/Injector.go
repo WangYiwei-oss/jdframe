@@ -31,7 +31,8 @@ func GetBeans() []interface{} {
 			presetFuncV := reflect.ValueOf(presetFunc)
 			if presetFuncV.Kind() == reflect.Func {
 				parms := make([]reflect.Value, 0)
-				ret = append(ret, presetFuncV.Call(parms))
+				v := presetFuncV.Call(parms)[0]
+				ret = append(ret, v.Interface())
 			} else {
 				log.Fatalln("ConfigInjector: 必须传一个func对象")
 			}

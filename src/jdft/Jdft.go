@@ -97,6 +97,9 @@ func (j *Jdft) Mount(version string, controllers ...JdController) *Jdft {
 }
 
 func (j *Jdft) Beans(beans ...interface{}) *Jdft {
+	if len(beans) == 0 {
+		return j
+	}
 	for _, bean := range beans {
 		j.beanfactory.addBean(bean)
 	}
