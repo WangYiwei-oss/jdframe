@@ -1,6 +1,7 @@
 package jdft
 
 import (
+	"log"
 	"reflect"
 )
 
@@ -12,9 +13,17 @@ func NewBeanFactory() *BeanFactory {
 	return &BeanFactory{}
 }
 
+// addBean 将bean注册到bean factory
 func (b *BeanFactory) addBean(bean interface{}) {
-	b.inject(bean) //bean自己也可以注入
-	b.Beans = append(b.Beans, bean)
+	t := reflect.TypeOf(bean)
+	if t.Kind() != reflect.Ptr { //必须是指针类型
+		log.Fatalln("bean_factory required ptr object")
+	}
+	if t.Elem().Kind() != reflect.Struct { //如果不是一个结构体指针的话不予注册
+		return
+	}
+	b.Beans = append(b.Beans, bean) //把bean注册到注册表中去
+	b.inject(bean)                  //
 }
 
 func (b *BeanFactory) lookupBean(p reflect.Type) interface{} {
@@ -26,19 +35,24 @@ func (b *BeanFactory) lookupBean(p reflect.Type) interface{} {
 	return nil
 }
 
+// inject 将结构体的带有inject:"-"标签的，进行依赖注入
 func (b *BeanFactory) inject(obj interface{}) {
-	v_obj := reflect.ValueOf(obj).Elem()
-	t_obj := v_obj.Type()
-	for i := 0; i < v_obj.NumField(); i++ {
-		objfield := v_obj.Field(i)
-		if objfield.Kind() != reflect.Ptr || !objfield.IsNil() { //字段必须是空的指针
+	if obj == nil {
+		return
+	}
+	v_obj := reflect.ValueOf(obj)
+	if v_obj.Kind() == reflect.Ptr { //确保传入对象而不是指针
+		v_obj = v_obj.Elem()
+	}
+	for i := 0; i < v_obj.NumField(); i++ { //对结构体每一个成员进行遍历
+		objField := v_obj.Type().Field(i)
+		if v_obj.Field(i).Kind() != reflect.Ptr || !v_obj.Field(i).IsNil() { //字段必须是空的指针
 			continue
 		}
-		inject_value := t_obj.Field(i).Tag.Get("inject")
-		if inject_value == "-" {
-			if bean := b.lookupBean(objfield.Type()); bean != nil {
-				objfield.Set(reflect.New(objfield.Type().Elem())) //指针的指针设置New自己
-				objfield.Elem().Set(reflect.ValueOf(bean).Elem()) //而值直接设为豌豆荚中的对应元素
+		if v_obj.Field(i).CanSet() && objField.Tag.Get("inject") == "-" { //必须带inject="-"注解
+			if bean := b.lookupBean(objField.Type); bean != nil { //去注册表中寻找，如果找到了就进行依赖注入
+				v_obj.Field(i).Set(reflect.ValueOf(bean))
+				b.inject(bean) //处理循环注入
 			}
 		}
 	}
