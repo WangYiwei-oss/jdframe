@@ -3,6 +3,7 @@ package jdft
 import (
 	"log"
 	"reflect"
+	"strings"
 )
 
 type BeanFactory struct {
@@ -23,7 +24,23 @@ func (b *BeanFactory) addBean(bean interface{}) {
 		return
 	}
 	b.Beans = append(b.Beans, bean) //把bean注册到注册表中去
-	b.inject(bean)                  //
+	b.inject(bean)                  //对bean进行依赖注入
+
+	//下面是将所有包含前缀JdInit的类方法全部执行一遍，并将有一个非空指针返回值的注册到注册表
+	v := reflect.ValueOf(bean)
+	for i := 0; i < t.NumMethod(); i++ {
+		method := t.Method(i)
+		if strings.HasPrefix(method.Name, "JdInit") {
+			callRet := v.Method(i).Call(nil)
+			if callRet != nil && len(callRet) == 1 {
+				if callRet[0].Kind() != reflect.Ptr || callRet[0].IsNil() {
+					continue
+				} else {
+					b.Beans = append(b.Beans, callRet[0].Interface())
+				}
+			}
+		}
+	}
 }
 
 func (b *BeanFactory) lookupBean(p reflect.Type) interface{} {

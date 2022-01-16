@@ -96,8 +96,9 @@ func (j *Jdft) Mount(version string, controllers ...JdController) *Jdft {
 	return j
 }
 
+// Beans 进行依赖注入
 func (j *Jdft) Beans(beans ...interface{}) *Jdft {
-	if len(beans) == 0 {
+	if beans == nil || len(beans) == 0 {
 		return j
 	}
 	for _, bean := range beans {
