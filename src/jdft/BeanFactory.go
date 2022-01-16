@@ -31,7 +31,7 @@ func (b *BeanFactory) inject(obj interface{}) {
 	t_obj := v_obj.Type()
 	for i := 0; i < v_obj.NumField(); i++ {
 		objfield := v_obj.Field(i)
-		if !objfield.IsNil() || objfield.Kind() != reflect.Ptr { //字段必须是空的指针
+		if objfield.Kind() != reflect.Ptr || !objfield.IsNil() { //字段必须是空的指针
 			continue
 		}
 		inject_value := t_obj.Field(i).Tag.Get("inject")
