@@ -14,7 +14,7 @@ func NewBeanFactory() *BeanFactory {
 
 func (b *BeanFactory) addBean(bean interface{}) {
 	b.Beans = append(b.Beans, bean)
-	b.inject(bean)
+	b.inject(bean) //bean自己也可以注入
 }
 
 func (b *BeanFactory) lookupBean(p reflect.Type) interface{} {

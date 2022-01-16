@@ -31,3 +31,12 @@
 {"Level":"info","Time":"2022-01-16 15:31:34","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2022-01-16 15:32:42","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2022-01-16 15:37:20","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 16:01:30","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 17:26:39","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 17:29:59","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 17:30:47","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 17:33:51","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 17:34:24","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 17:34:52","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 17:35:22","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-01-16 17:38:06","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
