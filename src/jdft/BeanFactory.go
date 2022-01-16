@@ -33,11 +33,7 @@ func (b *BeanFactory) addBean(bean interface{}) {
 		if strings.HasPrefix(method.Name, "JdInit") {
 			callRet := v.Method(i).Call(nil)
 			if callRet != nil && len(callRet) == 1 {
-				if callRet[0].Kind() != reflect.Ptr || callRet[0].IsNil() {
-					continue
-				} else {
-					b.Beans = append(b.Beans, callRet[0].Interface())
-				}
+				b.Beans = append(b.Beans, callRet[0].Interface())
 			}
 		}
 	}
