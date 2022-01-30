@@ -19,7 +19,7 @@ func (w *WsClient) ReadLoop() {
 		t, data, err := w.conn.ReadMessage()
 		if err != nil {
 			w.conn.Close()
-			ClientMap.Delete(w.conn)
+			WebSocketFactory.Delete(w.conn)
 			w.closeChan <- struct{}{}
 			break
 		}
