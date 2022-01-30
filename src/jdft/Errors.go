@@ -15,6 +15,11 @@ func ErrorHandler() gin.HandlerFunc {
 	}
 }
 
+func Throw(err string, code int, context *gin.Context) {
+	context.Set("JDFT STATUS", code)
+	panic(err)
+}
+
 func Error(err error, msg ...string) {
 	if err == nil {
 		return
