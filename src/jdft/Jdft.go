@@ -6,6 +6,7 @@ import (
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"github.com/WangYiwei-oss/jdframe/src/configs"
 	"github.com/WangYiwei-oss/jdframe/src/models"
+	"github.com/WangYiwei-oss/jdframe/wscore"
 	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
 	"github.com/robfig/cron/v3"
@@ -21,6 +22,7 @@ type Gorm configs.GormAdapter
 type Jedis configs.Jedis
 type QrCode configs.QrCode
 
+var WebSocketFactory *wscore.ClientMap
 var CasbinEnforcer *casbin.Enforcer
 var GlobalLogger *configs.Mlogger
 
@@ -31,6 +33,7 @@ var taskCron *cron.Cron
 func init() {
 	GlobalLogger = configs.GetLogger("Global")
 	CasbinEnforcer = mcasbin.E
+	WebSocketFactory = wscore.WebSocketFactory
 }
 
 func GetGlobalSettings() map[string]interface{} {
