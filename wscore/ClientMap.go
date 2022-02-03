@@ -33,10 +33,10 @@ func newClientMap() *ClientMap {
 	}
 }
 
-func (c *ClientMap) Store(class string, conn *websocket.Conn, label WsClientLabel, sendStrategy WsSendStrategy) {
+func (c *ClientMap) Store(class string, conn *websocket.Conn, label WsClientLabel, sendStrategy WsSendStrategy, readCallback ReadCallback) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
-	wsClient := NewWsClient(conn, label, sendStrategy)
+	wsClient := NewWsClient(conn, label, sendStrategy, readCallback)
 	if conns, ok := c.data[class]; ok {
 		conns[conn.RemoteAddr().String()] = wsClient
 	} else {
@@ -71,6 +71,7 @@ func (c *ClientMap) SendAllClass(class string, v interface{}) {
 			if err != nil {
 				c.Delete(wsClient.conn)
 				log.Println("WebSocket Core:", err, ", Will Delete Conn")
+				continue
 			}
 		}
 	} else {
@@ -84,6 +85,7 @@ func (c *ClientMap) HeartBeat() {
 			err := wsClient.conn.WriteMessage(websocket.TextMessage, []byte("ping"))
 			if err != nil {
 				c.Delete(wsClient.conn)
+				continue
 			}
 		}
 	}
