@@ -4,7 +4,7 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-type WsClientLabel interface{}
+type WsClientLabel map[string]string
 type WsSendStrategy func(WsClientLabel) bool
 type ReadCallback func(*WsClient, int, []byte)
 
