@@ -81,7 +81,7 @@ func (c *ClientMap) SendAllClass(class string, v interface{}) {
 func (c *ClientMap) HeartBeat() {
 	for _, conns := range c.data {
 		for _, wsClient := range conns {
-			err := wsClient.conn.WriteJSON("ping")
+			err := wsClient.conn.WriteMessage(websocket.TextMessage, []byte("ping"))
 			if err != nil {
 				c.Delete(wsClient.conn)
 			}
