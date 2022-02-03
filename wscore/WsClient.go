@@ -6,7 +6,7 @@ import (
 
 type WsClientLabel interface{}
 type WsSendStrategy func(WsClientLabel) bool
-type ReadCallback func(int, []byte)
+type ReadCallback func(*WsClient, int, []byte)
 
 type WsClient struct {
 	Label        WsClientLabel  //允许用户自定义的字段
@@ -47,7 +47,7 @@ func (w *WsClient) ReadLoop() {
 			w.closeChan <- struct{}{}
 			break
 		}
-		w.ReadCallback(t, data)
+		w.ReadCallback(w, t, data)
 		//w.readChan <- NewWsMessage(t, data)
 		//
 	}
