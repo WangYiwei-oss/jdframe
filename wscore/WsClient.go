@@ -47,7 +47,8 @@ func (w *WsClient) ReadLoop() {
 			w.closeChan <- struct{}{}
 			break
 		}
-		w.readChan <- NewWsMessage(t, data)
 		w.ReadCallback(t, data)
+		//w.readChan <- NewWsMessage(t, data)
+		//
 	}
 }
