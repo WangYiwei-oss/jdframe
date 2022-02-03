@@ -24,10 +24,10 @@ func newClientMap() *ClientMap {
 	}
 }
 
-func (c *ClientMap) Store(class string, conn *websocket.Conn) {
+func (c *ClientMap) Store(class string, conn *websocket.Conn, label WsClientLabel, sendStrategy WsSendStrategy) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
-	wsClient := NewWsClient(conn)
+	wsClient := NewWsClient(conn, label, sendStrategy)
 	if conns, ok := c.data[class]; ok {
 		conns[conn.RemoteAddr().String()] = wsClient
 	} else {

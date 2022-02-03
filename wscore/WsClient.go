@@ -4,14 +4,35 @@ import (
 	"github.com/gorilla/websocket"
 )
 
+type WsClientLabel interface{}
+type WsSendStrategy func(WsClientLabel) bool
 type WsClient struct {
-	conn      *websocket.Conn
-	readChan  chan *WsMessage //读队列
-	closeChan chan struct{}   //失败队列
+	Label        WsClientLabel  //允许用户自定义的字段
+	SendStrategy WsSendStrategy //允许用户自定义的发送策略，为true时才会发送
+	conn         *websocket.Conn
+	readChan     chan *WsMessage //读队列
+	closeChan    chan struct{}   //失败队列
+
 }
 
-func NewWsClient(conn *websocket.Conn) *WsClient {
-	return &WsClient{conn: conn, readChan: make(chan *WsMessage), closeChan: make(chan struct{})}
+func defaultSendStrategy(l WsClientLabel) bool {
+	return true
+}
+
+func NewWsClient(conn *websocket.Conn, label WsClientLabel, sendStrategy WsSendStrategy) *WsClient {
+	var s WsSendStrategy
+	if sendStrategy == nil {
+		s = defaultSendStrategy
+	} else {
+		s = sendStrategy
+	}
+	return &WsClient{
+		Label:        label,
+		SendStrategy: s,
+		conn:         conn,
+		readChan:     make(chan *WsMessage),
+		closeChan:    make(chan struct{}),
+	}
 }
 
 func (w *WsClient) ReadLoop() {
