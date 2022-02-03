@@ -2,6 +2,7 @@ package wscore
 
 import (
 	"github.com/gorilla/websocket"
+	"log"
 )
 
 type WsClientLabel map[string]string
@@ -50,5 +51,12 @@ func (w *WsClient) ReadLoop() {
 		w.ReadCallback(w, t, data)
 		//w.readChan <- NewWsMessage(t, data)
 		//
+	}
+}
+
+func (w *WsClient) SendMessage(v interface{}) {
+	err := w.conn.WriteJSON(v)
+	if err != nil {
+		log.Println("WsClient: send message error", err)
 	}
 }
