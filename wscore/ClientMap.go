@@ -1,15 +1,24 @@
 package wscore
 
 import (
+	"github.com/WangYiwei-oss/jdframe/src/configs"
 	"github.com/gorilla/websocket"
 	"log"
 	"sync"
+	"time"
 )
 
 var WebSocketFactory *ClientMap
 
 func init() {
 	WebSocketFactory = newClientMap()
+	configs.GetLogger("Global").Info("WebSocket Core: start heartbeat")
+	go func() {
+		for {
+			WebSocketFactory.HeartBeat()
+			time.Sleep(2 * time.Second)
+		}
+	}()
 }
 
 type ClientMap struct {
@@ -61,10 +70,21 @@ func (c *ClientMap) SendAllClass(class string, v interface{}) {
 			err := wsClient.conn.WriteJSON(v)
 			if err != nil {
 				c.Delete(wsClient.conn)
-				log.Println("WebSocket Core:", err)
+				log.Println("WebSocket Core:", err, ", Will Delete Conn")
 			}
 		}
 	} else {
 		log.Println("WebSocket Core: no class")
+	}
+}
+
+func (c *ClientMap) HeartBeat() {
+	for _, conns := range c.data {
+		for _, wsClient := range conns {
+			err := wsClient.conn.WriteJSON("ping")
+			if err != nil {
+				c.Delete(wsClient.conn)
+			}
+		}
 	}
 }
