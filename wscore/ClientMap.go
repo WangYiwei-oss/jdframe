@@ -65,10 +65,10 @@ func (c *ClientMap) Delete(conn *websocket.Conn) {
 }
 
 //SendAllClass 对所有class类别且满足自定义的策略的客户端发送消息
-func (c *ClientMap) SendAllClass(class string, v interface{}) {
+func (c *ClientMap) SendAllClass(class string, v interface{}, custom ...interface{}) {
 	if conns, ok := c.data[class]; ok {
 		for _, wsClient := range conns {
-			if wsClient.SendStrategy(wsClient.Label) { //策略生效才会发送
+			if wsClient.SendStrategy(wsClient.Label, custom...) { //策略生效才会发送
 				err := wsClient.conn.WriteJSON(v)
 				if err != nil {
 					c.Delete(wsClient.conn)

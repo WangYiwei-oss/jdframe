@@ -6,7 +6,7 @@ import (
 )
 
 type WsClientLabel map[string]string
-type WsSendStrategy func(WsClientLabel) bool
+type WsSendStrategy func(WsClientLabel, ...interface{}) bool
 type ReadCallback func(*WsClient, int, []byte)
 
 type WsClient struct {
@@ -18,7 +18,7 @@ type WsClient struct {
 	closeChan    chan struct{}   //失败队列
 }
 
-func defaultSendStrategy(l WsClientLabel) bool {
+func defaultSendStrategy(l WsClientLabel, custom ...interface{}) bool {
 	return true
 }
 
