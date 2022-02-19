@@ -18,10 +18,9 @@ import (
 type User models.User
 type UserRole models.UserRole
 
-type Gorm configs.GormAdapter
-type Jedis configs.Jedis
-type QrCode configs.QrCode
-
+var Jedis *configs.Jedis
+var QrCode *configs.QrCode
+var Gorm *configs.GormAdapter
 var WebSocketFactory *wscore.ClientMap
 var CasbinEnforcer *casbin.Enforcer
 var GlobalLogger *configs.Mlogger
@@ -34,6 +33,9 @@ func init() {
 	GlobalLogger = configs.GetLogger("Global")
 	CasbinEnforcer = mcasbin.E
 	WebSocketFactory = wscore.WebSocketFactory
+	Gorm = configs.NewGormAdapter()
+	Jedis = configs.NewJedis()
+	QrCode = configs.NewQrCode()
 }
 
 func GetGlobalSettings() map[string]interface{} {
