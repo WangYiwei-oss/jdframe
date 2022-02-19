@@ -1,9 +1,13 @@
 package models
 
-import "fmt"
+import (
+	"fmt"
+	"gorm.io/gorm"
+)
 
 type User struct {
-	UserId   int    `gorm:"column:user_id;primaryKey"`
+	gorm.Model
+	UserId   int    `gorm:"column:user_id;primaryKey;AUTO_INCREMENT"`
 	UserName string `gorm:"column:user_name"`
 	Password string `gorm:"column:password"`
 	RoleName string `gorm:"column:role_name"`

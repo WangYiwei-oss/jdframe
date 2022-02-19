@@ -17,6 +17,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/olivere/elastic/v7 v7.0.31
 	github.com/robfig/cron/v3 v3.0.0
+	github.com/satori/go.uuid v1.2.0
 	github.com/ugorji/go v1.2.6 // indirect
 	go.uber.org/zap v1.19.1
 	golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871 // indirect
