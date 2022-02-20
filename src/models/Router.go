@@ -4,7 +4,6 @@ import "gorm.io/gorm"
 
 type Router struct {
 	gorm.Model
-	RouterId     int    `gorm:"column:r_id;primaryKey"`
 	RouterName   string `gorm:"column:r_name"`
 	RouterUri    string `gorm:"column:r_uri"`
 	RouterMethod string `gorm:"column:r_method"`

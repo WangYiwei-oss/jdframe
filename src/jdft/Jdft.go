@@ -85,6 +85,7 @@ func (j *Jdft) Attach(f ...gin.HandlerFunc) *Jdft {
 }
 
 func (j *Jdft) Launch() {
+	log.Println("[INFO] 迁移角色表")
 	//角色数据表迁移
 	err := Gorm.AutoMigrate(&models.User{})
 	if err != nil {
