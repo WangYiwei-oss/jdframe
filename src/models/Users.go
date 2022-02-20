@@ -5,6 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// User 默认角色表，像使用默认角色表请继承
 type User struct {
 	gorm.Model
 	UserName string `gorm:"column:user_name"`
