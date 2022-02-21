@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	configinjector.RegisterBean("ELASTICSEARCH", NewGormAdapter)
+	configinjector.RegisterBean("ELASTICSEARCH", NewEsAdapter)
 }
 
 var doOnceEs sync.Once
@@ -23,7 +23,7 @@ var es *elastic.Client
 
 func NewEsAdapter() *EsAdapter {
 	var err error
-	doOnceGorm.Do(func() {
+	doOnceEs.Do(func() {
 		config := configparser.GlobalSettings["ELASTICSEARCH_CONFIG"].(map[string]interface{})
 		es, err = elastic.NewClient(
 			elastic.SetURL(fmt.Sprintf("http://%s:%s", config["IP"].(string), config["PORT"].(string))),
@@ -31,9 +31,8 @@ func NewEsAdapter() *EsAdapter {
 		)
 		if err != nil {
 			log.Fatalln("连接ElasticSearch失败", err)
-		} else {
-			log.Println("连接ElasticSearch成功")
 		}
+		log.Println("连接ElasticSearch成功,URL: ", config["IP"].(string)+":"+config["PORT"].(string))
 	})
 	return &EsAdapter{
 		Client: es,

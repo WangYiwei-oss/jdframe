@@ -24,6 +24,7 @@ var Gorm *configs.GormAdapter
 var WebSocketFactory *wscore.ClientMap
 var CasbinEnforcer *casbin.Enforcer
 var GlobalLogger *configs.Mlogger
+var ElasticSearch *configs.EsAdapter
 
 //单例
 var onceCron sync.Once
@@ -36,6 +37,7 @@ func init() {
 	Gorm = configs.NewGormAdapter()
 	Jedis = configs.NewJedis()
 	QrCode = configs.NewQrCode()
+	ElasticSearch = configs.NewEsAdapter()
 }
 
 func GetGlobalSettings() map[string]interface{} {
