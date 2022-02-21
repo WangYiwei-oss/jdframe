@@ -87,11 +87,11 @@ func (j *Jdft) Attach(f ...gin.HandlerFunc) *Jdft {
 func (j *Jdft) Launch() {
 	log.Println("[INFO] 迁移角色表")
 	//角色数据表迁移
-	err := Gorm.AutoMigrate(&models.User{})
-	if err != nil {
-		log.Fatalln("用户表迁移错误:", err)
-	}
-	err = Gorm.AutoMigrate(&models.Role{})
+	//err := Gorm.AutoMigrate(&models.User{})
+	//if err != nil {
+	//	log.Fatalln("用户表迁移错误:", err)
+	//}
+	err := Gorm.AutoMigrate(&models.Role{})
 	if err != nil {
 		log.Fatalln("权限表迁移错误:", err)
 	}

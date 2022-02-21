@@ -14,7 +14,7 @@ func (r *RoleRel) String() string {
 	return r.PRole + ":" + r.Role
 }
 
-func GetRoles(pid int, m *[]*RoleRel, pname string) {
+func GetRoles(pid uint, m *[]*RoleRel, pname string) {
 	proles := make([]*models.Role, 0)
 	configs.NewGormAdapter().Where("role_pid=?", pid).Find(&proles)
 	if len(proles) == 0 {
@@ -24,7 +24,7 @@ func GetRoles(pid int, m *[]*RoleRel, pname string) {
 		if pname != "" {
 			*m = append(*m, &RoleRel{pname, item.RoleName})
 		}
-		GetRoles(item.RoleId, m, item.RoleName)
+		GetRoles(item.ID, m, item.RoleName)
 	}
 }
 
