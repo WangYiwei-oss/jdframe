@@ -2,12 +2,11 @@ package models
 
 import (
 	"fmt"
-	"gorm.io/gorm"
 )
 
 // User 默认角色表，像使用默认角色表请继承
 type User struct {
-	gorm.Model
+	ID       uint   `gorm:"primarykey"`
 	UserName string `gorm:"column:user_name"`
 	Password string `gorm:"column:password"`
 	RoleName string `gorm:"column:role_name"`

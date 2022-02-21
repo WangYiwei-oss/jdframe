@@ -77,3 +77,5 @@
 {"Level":"info","Time":"2022-02-22 00:21:09","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2022-02-22 00:21:56","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
 {"Level":"info","Time":"2022-02-22 00:21:56","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-02-22 00:22:55","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-02-22 00:22:55","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
