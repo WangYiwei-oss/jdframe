@@ -127,9 +127,6 @@ github.com/pkg/errors
 # github.com/robfig/cron/v3 v3.0.0
 ## explicit
 github.com/robfig/cron/v3
-# github.com/satori/go.uuid v1.2.0
-## explicit
-github.com/satori/go.uuid
 # github.com/ugorji/go v1.2.6
 ## explicit
 # github.com/ugorji/go/codec v1.2.6

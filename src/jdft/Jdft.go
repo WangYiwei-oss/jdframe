@@ -93,20 +93,20 @@ func (j *Jdft) Launch() {
 	//if err != nil {
 	//	log.Fatalln("用户表迁移错误:", err)
 	//}
-	err := Gorm.AutoMigrate(&models.Role{})
-	if err != nil {
-		log.Fatalln("权限表迁移错误:", err)
-	}
-	err = Gorm.AutoMigrate(&models.Router{})
-	if err != nil {
-		log.Fatalln("router表迁移错误:", err)
-	}
-	err = Gorm.AutoMigrate(&models.UserRole{})
-	if err != nil {
-		log.Fatalln("user_role表迁移错误:", err)
-	}
+	//err := Gorm.AutoMigrate(&models.Role{})
+	//if err != nil {
+	//	log.Fatalln("权限表迁移错误:", err)
+	//}
+	//err = Gorm.AutoMigrate(&models.Router{})
+	//if err != nil {
+	//	log.Fatalln("router表迁移错误:", err)
+	//}
+	//err = Gorm.AutoMigrate(&models.UserRole{})
+	//if err != nil {
+	//	log.Fatalln("user_role表迁移错误:", err)
+	//}
 	ip, _ := configparser.GlobalSettings["IP"].(string)
-	err = j.Run(ip)
+	err := j.Run(ip)
 	if err != nil {
 		log.Fatalf("服务器启动失败, %s", err)
 	}
