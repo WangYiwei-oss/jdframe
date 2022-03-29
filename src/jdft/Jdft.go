@@ -1,13 +1,11 @@
 package jdft
 
 import (
-	mcasbin "github.com/WangYiwei-oss/jdframe/src/casbin"
 	"github.com/WangYiwei-oss/jdframe/src/configinjector"
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"github.com/WangYiwei-oss/jdframe/src/configs"
 	"github.com/WangYiwei-oss/jdframe/src/models"
 	"github.com/WangYiwei-oss/jdframe/wscore"
-	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
 	"github.com/robfig/cron/v3"
 	"log"
@@ -22,7 +20,8 @@ var Jedis *configs.Jedis
 var QrCode *configs.QrCode
 var Gorm *configs.GormAdapter
 var WebSocketFactory *wscore.ClientMap
-var CasbinEnforcer *casbin.Enforcer
+
+//var CasbinEnforcer *casbin.Enforcer
 var GlobalLogger *configs.Mlogger
 var ElasticSearch *configs.EsAdapter
 
@@ -32,7 +31,7 @@ var taskCron *cron.Cron
 
 func init() {
 	GlobalLogger = configs.GetLogger("Global")
-	CasbinEnforcer = mcasbin.E
+	//CasbinEnforcer = mcasbin.E
 	WebSocketFactory = wscore.WebSocketFactory
 	Gorm = configs.NewGormAdapter()
 	Jedis = configs.NewJedis()
