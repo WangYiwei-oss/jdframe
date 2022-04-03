@@ -6,6 +6,7 @@ import (
 	json "github.com/json-iterator/go"
 	"log"
 	"os"
+	"path"
 	"strconv"
 	"strings"
 )
@@ -16,7 +17,7 @@ var GlobalSettings map[string]interface{}
 func init() {
 	GlobalSettings = make(map[string]interface{})
 	wd, _ := os.Getwd()
-	is, _ := antlr.NewFileStream(wd + "\\Settings.conf")
+	is, _ := antlr.NewFileStream(path.Join(wd, "Settings.conf"))
 	lexer := parser.NewConfigExprLexer(is)
 	ts := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
 	p := parser.NewConfigExprParser(ts)
