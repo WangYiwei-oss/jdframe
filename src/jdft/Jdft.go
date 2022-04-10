@@ -1,6 +1,7 @@
 package jdft
 
 import (
+	"fmt"
 	"github.com/WangYiwei-oss/jdframe/src/configinjector"
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"github.com/WangYiwei-oss/jdframe/src/configs"
@@ -14,7 +15,8 @@ import (
 
 //暴露一些类型给用户
 type User models.User
-type UserRole models.UserRole
+
+//type UserRole models.UserRole
 
 var Jedis *configs.Jedis
 var QrCode *configs.QrCode
@@ -33,10 +35,22 @@ func init() {
 	GlobalLogger = configs.GetLogger("Global")
 	//CasbinEnforcer = mcasbin.E
 	WebSocketFactory = wscore.WebSocketFactory
-	Gorm = configs.NewGormAdapter()
-	Jedis = configs.NewJedis()
-	QrCode = configs.NewQrCode()
-	ElasticSearch = configs.NewEsAdapter()
+	beans := configparser.GlobalSettings["BEANS"].([]interface{})
+	for _, bean := range beans {
+		fmt.Println("================", bean.(string))
+		switch bean.(string) {
+		case "MYSQL":
+			Gorm = configs.NewGormAdapter()
+		case "REDIS":
+			Jedis = configs.NewJedis()
+		case "QRCODE":
+			QrCode = configs.NewQrCode()
+		case "ELASTICSEARCH":
+		}
+		if bean.(string) == "MYSQL" {
+			ElasticSearch = configs.NewEsAdapter()
+		}
+	}
 }
 
 func GetGlobalSettings() map[string]interface{} {

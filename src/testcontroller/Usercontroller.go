@@ -15,8 +15,9 @@ type User struct {
 	Password string `gorm:"column:password"`
 }
 type UserController struct {
-	DB    *configs.GormAdapter `inject:"-"`
-	Redis *configs.Jedis       `inject:"-"`
+	DB    *configs.GormAdapter        //`inject:"-"`
+	Redis *configs.Jedis              `inject:"-"`
+	Snow  *configs.SnowflakeGenerator `inject:"-"`
 }
 
 func NewUserController() *UserController {

@@ -11,7 +11,12 @@ type presetBeans map[string]interface{}
 var ConfigInjector presetBeans
 
 func RegisterBean(name string, bean interface{}) {
-	ConfigInjector[name] = bean
+	beans := configparser.GlobalSettings["BEANS"].([]interface{})
+	for _, b := range beans {
+		if name == b.(string) {
+			ConfigInjector[name] = bean
+		}
+	}
 }
 
 func _findBean(name string, beanNames []interface{}) bool {
