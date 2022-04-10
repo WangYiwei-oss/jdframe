@@ -4,12 +4,11 @@ import (
 	"fmt"
 )
 
-// User 默认角色表，像使用默认角色表请继承
+// User 默认角色表，想使用默认角色表请继承
 type User struct {
-	ID       uint   `gorm:"primarykey"`
-	UserName string `gorm:"column:user_name"`
-	Password string `gorm:"column:password"`
-	RoleName string `gorm:"column:role_name"`
+	ID       string `gorm:"primarykey;column:id;type:char(18)" json:"id"`
+	UserName string `gorm:"column:user_name;type:varchar(25);not null;" json:"user_name"`
+	Password string `gorm:"column:password;type:varchar(25);not null;" json:"password"`
 }
 
 func (u *User) TableName() string {
@@ -25,5 +24,5 @@ func (u *User) JModelName() string {
 }
 
 func (u *User) String() string {
-	return fmt.Sprintf("%s:%s", u.UserName, u.RoleName)
+	return fmt.Sprintf("%s-%s", u.ID, u.UserName)
 }

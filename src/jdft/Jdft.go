@@ -1,7 +1,6 @@
 package jdft
 
 import (
-	"fmt"
 	"github.com/WangYiwei-oss/jdframe/src/configinjector"
 	"github.com/WangYiwei-oss/jdframe/src/configparser"
 	"github.com/WangYiwei-oss/jdframe/src/configs"
@@ -37,7 +36,6 @@ func init() {
 	WebSocketFactory = wscore.WebSocketFactory
 	beans := configparser.GlobalSettings["BEANS"].([]interface{})
 	for _, bean := range beans {
-		fmt.Println("================", bean.(string))
 		switch bean.(string) {
 		case "MYSQL":
 			Gorm = configs.NewGormAdapter()
@@ -100,9 +98,9 @@ func (j *Jdft) Attach(f ...gin.HandlerFunc) *Jdft {
 }
 
 func (j *Jdft) Launch() {
-	log.Println("[INFO] 迁移角色表")
+	//log.Println("[INFO] 迁移角色表")
 	//角色数据表迁移
-	//err := Gorm.AutoMigrate(&models.User{})
+	Gorm.AutoMigrate(&models.User{})
 	//if err != nil {
 	//	log.Fatalln("用户表迁移错误:", err)
 	//}
