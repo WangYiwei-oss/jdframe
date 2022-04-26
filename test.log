@@ -78,3 +78,20 @@
 {"Level":"info","Time":"2022-02-22 00:21:56","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
 {"Level":"info","Time":"2022-02-22 00:22:55","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
 {"Level":"info","Time":"2022-02-22 00:22:55","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-04-10 20:07:46","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 20:09:07","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 20:13:02","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 20:14:05","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 20:15:15","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 20:16:32","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 20:16:32","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-04-10 20:18:21","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 20:18:21","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-04-10 20:19:36","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 20:19:36","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-04-10 23:09:32","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 23:09:32","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-04-10 23:10:09","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-10 23:10:09","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
+{"Level":"info","Time":"2022-04-26 21:53:25","Caller":"configs/Logger.go:54","Msg":"WebSocket Core: start heartbeat"}
+{"Level":"info","Time":"2022-04-26 21:53:25","Caller":"configs/Logger.go:54","Msg":"这是一个测试"}
