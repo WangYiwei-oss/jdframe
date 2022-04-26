@@ -44,8 +44,6 @@ func init() {
 		case "QRCODE":
 			QrCode = configs.NewQrCode()
 		case "ELASTICSEARCH":
-		}
-		if bean.(string) == "MYSQL" {
 			ElasticSearch = configs.NewEsAdapter()
 		}
 	}
