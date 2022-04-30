@@ -6,7 +6,7 @@ import (
 
 // User 默认角色表，想使用默认角色表请继承
 type User struct {
-	ID       string `gorm:"primarykey;column:id;type:char(18)" json:"id"`
+	ID       int64  `gorm:"primarykey;column:id" json:"id"`
 	UserName string `gorm:"column:user_name;type:varchar(25);not null;" json:"user_name"`
 	Password string `gorm:"column:password;type:varchar(25);not null;" json:"password"`
 }
