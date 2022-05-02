@@ -141,7 +141,7 @@ func (j *Jdft) Beans(beans ...interface{}) *Jdft {
 	return j
 }
 
-func (j *Jdft) Use(middleware ...gin.HandlerFunc) *Jdft {
+func (j *Jdft) Middlewares(middleware ...gin.HandlerFunc) *Jdft {
 	j.Engine.Use(middleware...)
 	return j
 }
