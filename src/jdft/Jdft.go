@@ -141,6 +141,11 @@ func (j *Jdft) Beans(beans ...interface{}) *Jdft {
 	return j
 }
 
+func (j *Jdft) Use(middleware ...gin.HandlerFunc) *Jdft {
+	j.Engine.Use(middleware...)
+	return j
+}
+
 //增加定时任务
 func (j *Jdft) CronTask(expr string, f func()) *Jdft {
 	_, err := getCronTask().AddFunc(expr, f)
